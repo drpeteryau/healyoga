@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const assetBase = process.env.GITHUB_ACTIONS === "true" ? "/healyoga" : "";
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Heal Yoga | Movement for Every Body",
   description: "Accessible, instructor-led yoga demonstrations and public health conversations from the University of Glasgow Heal Yoga initiative.",
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  icons: {
+    icon: `${assetBase}/favicon.svg`,
+    shortcut: `${assetBase}/favicon.svg`,
+  },
   openGraph: {
     title: "Heal Yoga | Movement for Every Body",
     description: "Accessible yoga practice and public health conversations for youth, older adults, and every body.",
