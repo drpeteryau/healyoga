@@ -1,0 +1,10 @@
+node_modules
+.next
+.vinext
+.vite
+out
+.wrangler
+.git
+.github
+*.log
+.DS_Store
