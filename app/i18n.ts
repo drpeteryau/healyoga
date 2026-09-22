@@ -88,6 +88,8 @@ export const ui: Record<Locale, Record<string, string>> = {
 
     footerTagline: "Move gently. Breathe freely. Practice safely.",
     footerAttribution: "University of Glasgow · Academic project",
+    footerTerms: "Terms & Conditions",
+    termsOnlyNotice: "",
 
     languageLabel: "Language",
   },
@@ -162,6 +164,8 @@ export const ui: Record<Locale, Record<string, string>> = {
 
     footerTagline: "輕柔活動身體，自在呼吸，安全練習。",
     footerAttribution: "格拉斯哥大學 · 學術專案",
+    footerTerms: "條款及細則",
+    termsOnlyNotice: "本頁面（條款及細則與使用權聲明）僅提供英文版本。",
 
     languageLabel: "語言",
   },
@@ -236,6 +240,8 @@ export const ui: Record<Locale, Record<string, string>> = {
 
     footerTagline: "轻柔活动身体，自在呼吸，安全练习。",
     footerAttribution: "格拉斯哥大学 · 学术项目",
+    footerTerms: "条款与条件",
+    termsOnlyNotice: "本页面（条款与条件及使用权声明）仅提供英文版本。",
 
     languageLabel: "语言",
   },

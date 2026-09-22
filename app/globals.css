@@ -140,11 +140,16 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .card-copy strong { font-size: 20px; line-height: 1.2; margin: 8px 0 18px; }
 .watch-label { margin-top: auto; font-size: 12px; line-height: 1.5; color: #777; }
 .empty { padding: 60px 0; text-align: center; color: var(--muted); }
-.interview-page, .credits-page { max-width: 1440px; margin: auto; padding: 80px 5vw 110px; min-height: calc(100vh - 84px); }
+.interview-page, .credits-page, .terms-page { max-width: 1440px; margin: auto; padding: 80px 5vw 110px; min-height: calc(100vh - 84px); }
 .page-intro { display: grid; grid-template-columns: 1fr .8fr; align-items: end; margin-bottom: 58px; }
 .page-intro .eyebrow { grid-column: 1/-1; }
 .page-intro h1 { font-size: clamp(48px, 5vw, 72px); margin: 0; }
 .page-intro p { margin: 0 0 8px; }
+.terms-notice { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+.terms-body { max-width: 760px; }
+.terms-body h2 { font-size: 20px; letter-spacing: -.3px; margin: 36px 0 10px; }
+.terms-body h2:first-child { margin-top: 0; }
+.terms-body p { color: var(--muted); line-height: 1.7; margin: 0; }
 .interview-layout { display: grid; grid-template-columns: 1.45fr .75fr; gap: 35px; }
 .interview-now { padding: 21px 4px; }
 .interview-now h2 { margin: 5px 0; font-size: 26px; }
@@ -196,6 +201,9 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .open-source p { margin: 0; line-height: 1.5; color: var(--muted); }
 .open-source a { color: var(--ink); font-weight: 800; }
 footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: #777; font-size: 12px; }
+.footer-links { display: flex; align-items: center; gap: 16px; }
+.footer-link { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+.footer-link:hover { color: var(--ink); }
 
 @media (max-width: 900px) {
   .hero, .page-intro, .credits-hero, .credits-grid, .interview-layout, .written-interview { grid-template-columns: 1fr; }
@@ -212,7 +220,7 @@ footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; 
   nav { justify-content: space-between; gap: 0; height: 46px; }
   nav button { flex: 1; }
   .lang-switcher { margin-top: 12px; width: 100%; justify-content: center; }
-  .hero, .library, .interview-page, .credits-page { padding-left: 20px; padding-right: 20px; }
+  .hero, .library, .interview-page, .credits-page, .terms-page { padding-left: 20px; padding-right: 20px; }
   .hero { gap: 42px; min-height: auto; }
   h1 { letter-spacing: -2.5px; }
   .section-heading { display: block; }
