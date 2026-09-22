@@ -67,19 +67,25 @@ npm run dev
 
 ## Deployment
 
-### GitHub Pages (automatic)
+This app ships to two independent targets from the same static export:
 
-`.github/workflows/deploy-pages.yml` builds the static export on every push
-to `main` and deploys it to GitHub Pages under the `/healyoga` base path.
+### Coolify (primary, Docker Compose)
 
-### Docker
+`compose.yaml` builds `Dockerfile` (Next.js static export → nginx on port
+`9711`) and is what Coolify's CI/CD pulls and runs.
 
 ```bash
 docker compose up --build
 ```
 
-This builds the static export and serves it via nginx on port `9711`
-(see `Dockerfile`, `compose.yaml`, `nginx.conf`).
+### GitHub Pages (secondary, static mirror)
+
+`.github/workflows/deploy-pages.yml` builds the static export on every push
+to `main` and deploys it to GitHub Pages under the `/healyoga` base path,
+via `actions/upload-pages-artifact` + `actions/deploy-pages`. This requires
+repo Settings → Pages → Build and deployment → Source to be set to
+**GitHub Actions** (not "Deploy from a branch" — that mode ignores this
+workflow's output entirely and falls back to rendering `README.md`).
 
 ## Project structure
 
