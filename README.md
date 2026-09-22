@@ -22,9 +22,16 @@ Live site: https://drpeteryau.github.io/healyoga
   behind the project.
 - **Credits** — the student development team, faculty advisor, supporting
   institutions, and special thanks to the project's yoga instructor.
-- **Multilingual UI** — English, Traditional Chinese, Simplified Chinese,
-  Tamil, and Malay, with automatic browser-locale detection and a manual
-  language switcher (`app/i18n.ts`).
+- **Multilingual UI** — automatic browser-locale detection and a manual
+  language switcher (`app/i18n.ts`), covering 5 languages:
+  - English (`en`)
+  - Traditional Chinese / 繁體中文 (`zh-Hant`)
+  - Simplified Chinese / 简体中文 (`zh-Hans`)
+  - Malay / Bahasa Melayu (`ms`)
+  - Tamil / தமிழ் (`ta`)
+- **First-visit disclaimer** — a pop-up shown on first load (Agree/Disagree,
+  see [Disclaimer popup](#disclaimer-popup) below), localized into all 5
+  languages above.
 
 ## Tech stack
 
@@ -86,6 +93,28 @@ public/         Static assets (favicon, OG image, instructor/interview photos)
 tests/          Rendered-HTML smoke test
 .github/        GitHub Actions deploy workflow
 ```
+
+## Disclaimer popup
+
+On first visit, `app/page.tsx` shows a blocking pop-up (state/strings in
+`app/i18n.ts`, e.g. `disclaimerTitle`/`disclaimerPoint1-4`) that the visitor
+must accept before using the site. English text:
+
+> **Before you begin**
+>
+> 1. This is a student learning and teaching project, created for
+>    educational purposes.
+> 2. We do our best to keep the content accurate, but we cannot guarantee
+>    that all information is correct.
+> 3. Languages other than English are machine-translated and may contain
+>    errors.
+> 4. Please be mindful of your own safety, and you are responsible for
+>    yourself when following any content on this site.
+>
+> **[ I Agree, Continue ]**   **[ I Disagree ]**
+
+The same four points are localized into Traditional Chinese, Simplified
+Chinese, Malay, and Tamil alongside the rest of the UI strings.
 
 ## Acknowledgements
 
