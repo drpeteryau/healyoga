@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { categoryLabels, localeLabels, localeNames, locales, ui, videoText, type Locale } from "./i18n";
 
+const assetBase = process.env.GITHUB_ACTIONS === "true" ? "/healyoga" : "";
+
 type Video = {
   id: string;
   title: string;
@@ -412,7 +414,7 @@ export default function Home() {
 
           <div className="written-interview">
             <figure className="written-photo">
-              <img src="/kamala.jpg" alt={t.writtenPhotoName} loading="lazy" />
+              <img src={`${assetBase}/kamala.jpg`} alt={t.writtenPhotoName} loading="lazy" />
               <figcaption>
                 <b>{t.writtenPhotoName}</b>
                 <small>{t.writtenPhotoAffiliation1}<br />{t.writtenPhotoAffiliation2}</small>
@@ -471,7 +473,7 @@ export default function Home() {
             </div>
           </div>
           <aside className="thanks">
-            <img className="thanks-photo" src="/lim-li-peng.jpg" alt="Ms Lim Li Peng" loading="lazy" />
+            <img className="thanks-photo" src={`${assetBase}/lim-li-peng.jpg`} alt="Ms Lim Li Peng" loading="lazy" />
             <div>
               <span className="eyebrow">{t.specialThanksLabel}</span>
               <h2>{t.specialThanksName}</h2>
