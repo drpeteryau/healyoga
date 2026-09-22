@@ -159,7 +159,7 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .round-play::after { content: ""; width: 0; height: 0; margin-left: 3px; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--ink); }
 .written-interview { display: grid; grid-template-columns: .55fr 1.45fr; gap: 40px; margin-top: 70px; padding-top: 60px; border-top: 1px solid var(--line); }
 .written-photo { margin: 0; }
-.written-photo img { width: 100%; max-width: 260px; border-radius: 22px; display: block; object-fit: cover; aspect-ratio: 1 / 1.06; }
+.written-photo img { width: 100%; max-width: 220px; border-radius: 50%; display: block; object-fit: cover; aspect-ratio: 1 / 1; border: 3px solid #fff; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
 .written-photo figcaption { margin-top: 16px; }
 .written-photo b { display: block; font-size: 17px; }
 .written-photo small { color: var(--muted); line-height: 1.5; }
