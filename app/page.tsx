@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { categoryLabels, localeLabels, localeNames, locales, ui, videoText, type Locale } from "./i18n";
 
-const assetBase = process.env.GITHUB_ACTIONS === "true" ? "/healyoga" : "";
+const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 type Video = {
   id: string;
