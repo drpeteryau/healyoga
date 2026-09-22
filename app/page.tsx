@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { categoryLabels, localeLabels, localeNames, locales, ui, videoText, type Locale } from "./i18n";
 
+const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 type Video = {
   id: string;
   title: string;
@@ -273,8 +275,23 @@ function LanguageSwitcher({ locale, onChange }: { locale: Locale; onChange: (l: 
   );
 }
 
+function LanguageSwitcherCompact({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
+  return (
+    <select
+      className="lang-switcher-compact"
+      aria-label={ui[locale].languageLabel}
+      value={locale}
+      onChange={(e) => onChange(e.target.value as Locale)}
+    >
+      {locales.map((l) => (
+        <option key={l} value={l}>{localeNames[l]}</option>
+      ))}
+    </select>
+  );
+}
+
 export default function Home() {
-  const [page, setPage] = useState<"practice" | "interviews" | "credits">("practice");
+  const [page, setPage] = useState<"practice" | "interviews" | "credits" | "terms">("practice");
   const [selectedPractice, setSelectedPractice] = useState(practiceVideos[0]);
   const [selectedInterview, setSelectedInterview] = useState(interviewVideos[0]);
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
@@ -284,7 +301,7 @@ export default function Home() {
   useEffect(() => {
     const syncHash = () => {
       const hash = window.location.hash.replace("#/", "");
-      if (hash === "interviews" || hash === "credits" || hash === "practice") setPage(hash);
+      if (hash === "interviews" || hash === "credits" || hash === "practice" || hash === "terms") setPage(hash);
     };
     syncHash();
     window.addEventListener("hashchange", syncHash);
@@ -324,7 +341,7 @@ export default function Home() {
     });
   }, [category, query, locale]);
 
-  function navigate(next: "practice" | "interviews" | "credits") {
+  function navigate(next: "practice" | "interviews" | "credits" | "terms") {
     window.location.hash = `/${next}`;
     setPage(next);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -333,6 +350,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
+        <LanguageSwitcherCompact locale={locale} onChange={setLocale} />
         <button className="brand" onClick={() => navigate("practice")} aria-label={t.brandHome}>
           <span className="brand-mark">H</span>
           <span><b>Heal</b><strong>Yoga</strong></span>
@@ -414,7 +432,7 @@ export default function Home() {
 
           <div className="written-interview">
             <figure className="written-photo">
-              <img src="/kamala.jpg" alt={t.writtenPhotoName} loading="lazy" />
+              <img src={`${assetBase}/kamala.jpg`} alt={t.writtenPhotoName} loading="lazy" />
               <figcaption>
                 <b>{t.writtenPhotoName}</b>
                 <small>{t.writtenPhotoAffiliation1}<br />{t.writtenPhotoAffiliation2}</small>
@@ -459,13 +477,27 @@ export default function Home() {
               </div>
             </article>
             <div className="credit-stack">
-              <article><span>{t.facultyAdvisorLabel}</span><h3>{t.facultyAdvisorName}</h3></article>
-              <article><span>{t.supportedByLabel}</span><h3>{t.supportedBy1}</h3><p>{t.supportedBy2}<br />{t.supportedBy3}</p></article>
+              <article>
+                <span>{t.facultyAdvisorLabel}</span>
+                <h3>{t.facultyAdvisorName}</h3>
+                <a href="https://github.com/drpeteryau/" target="_blank" rel="noreferrer">{t.facultyAdvisorGithub}</a>
+              </article>
+              <article>
+                <span>{t.supportedByLabel}</span>
+                <h3>{t.supportedByUniversity}</h3>
+                <p className="schools">{t.supportedBySchool1}<br />{t.supportedBySchool2}</p>
+                <h3>{t.supportedByInstitute}</h3>
+              </article>
             </div>
           </div>
           <aside className="thanks">
-            <span className="quote-mark">“</span>
-            <div><span className="eyebrow">{t.specialThanksLabel}</span><h2>{t.specialThanksName}</h2><p>{t.specialThanksBody}</p></div>
+            <img className="thanks-photo" src={`${assetBase}/lim-li-peng.jpg`} alt="Ms Lim Li Peng" loading="lazy" />
+            <div>
+              <span className="eyebrow">{t.specialThanksLabel}</span>
+              <h2>{t.specialThanksName}</h2>
+              <p>{t.specialThanksBody}</p>
+              <a href="https://yoga8288.com/" target="_blank" rel="noreferrer">{t.specialThanksLink}</a>
+            </div>
           </aside>
           <div className="open-source">
             <div><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
@@ -474,10 +506,46 @@ export default function Home() {
         </section>
       )}
 
+      {page === "terms" && (
+        <section className="terms-page">
+          <div className="page-intro">
+            <span className="eyebrow">Legal</span>
+            <h1>Terms &amp; Conditions<br /><em>and right of use statement</em></h1>
+            <p>Last updated 22 September 2026</p>
+          </div>
+          {t.termsOnlyNotice && <p className="terms-notice">{t.termsOnlyNotice}</p>}
+          <div className="terms-body">
+            <h2>1. About this project</h2>
+            <p>Heal Yoga is an academic, non-commercial project created by a University of Glasgow Singapore and Singapore Institute of Technology student team (CSC2101 &amp; CSC2102) as part of a Professional Software Development and Team Project module. It is provided for educational, research, and public-benefit purposes only.</p>
+
+            <h2>2. Not medical advice — your safety is your responsibility</h2>
+            <p>The yoga poses, stretches, and exercises demonstrated on this site are general wellness content, not medical advice. You are solely responsible for your own health and safety when following any content on this site. Please consult a qualified doctor or healthcare professional before starting any new exercise programme, particularly if you are pregnant, elderly, recovering from an injury, or have any pre-existing medical condition. Stop immediately and seek medical attention if you feel pain, dizziness, or discomfort.</p>
+
+            <h2>3. No warranty on accuracy</h2>
+            <p>While we have made our best effort to ensure the information, instructions, and content on this site are accurate and safe, we do not warrant or guarantee the completeness, accuracy, reliability, or suitability of any content for any particular purpose. Heal Yoga is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranties of any kind, express or implied.</p>
+
+            <h2>4. Limitation of liability</h2>
+            <p>To the fullest extent permitted by law, the Heal Yoga project team, its student developers, faculty advisor, contributing instructors, and affiliated institutions accept no liability or responsibility for any injury, loss, damage, or adverse outcome — direct or indirect — arising from your use of, or reliance on, this site or its content. You use Heal Yoga entirely at your own risk.</p>
+
+            <h2>5. Right of use and content ownership</h2>
+            <p>Video demonstrations, interviews, and photographs featured on this site are used with the informed consent of the individuals shown, for the educational purposes of this project. The underlying application source code is published as open source on GitHub for academic and non-commercial reuse (see the project repository for licence details); this does not extend to the personal likeness, voice, or image of any individual appearing in the videos or photographs, which may not be reused, copied, or redistributed separately without permission. All third-party video content is embedded via YouTube and remains subject to YouTube&apos;s own terms of service.</p>
+
+            <h2>6. Changes to these terms</h2>
+            <p>We may update this page from time to time as the project evolves. Continued use of Heal Yoga after changes are posted constitutes acceptance of the revised terms.</p>
+
+            <h2>7. Contact</h2>
+            <p>Questions about this statement can be directed to the faculty advisor via the GitHub project page linked in Credits.</p>
+          </div>
+        </section>
+      )}
+
       <footer>
         <button className="brand" onClick={() => navigate("practice")}><span className="brand-mark">H</span><span><b>Heal</b><strong>Yoga</strong></span></button>
         <p>{t.footerTagline}</p>
-        <span>{t.footerAttribution}</span>
+        <div className="footer-links">
+          <span>{t.footerAttribution}</span>
+          <button className="footer-link" onClick={() => navigate("terms")}>{t.footerTerms}</button>
+        </div>
       </footer>
     </main>
   );
