@@ -453,8 +453,8 @@ export default function Home() {
               <h2>CSC2101 & CSC2102</h2>
               <p className="course">{t.devTeamCourse}</p>
               <div className="member-grid">
-                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name, i) => (
-                  <div key={name}><span>{String(i + 1).padStart(2, "0")}</span><b>{name}</b></div>
+                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name) => (
+                  <div key={name}><b>{name}</b></div>
                 ))}
               </div>
             </article>
