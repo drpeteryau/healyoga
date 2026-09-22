@@ -116,7 +116,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     specialThanksLink: "Visit Ms Lim's yoga workshop ↗",
     openByDesign: "Open by design.",
     openByDesignBody: "Created for learning, wellbeing, and public benefit.",
-    viewOnGithub: "View the project on GitHub ↗",
+    viewOnGithub: "View on GitHub ↗",
+    repo1Name: "healyoga — this web app",
+    repo1Desc:
+      "This project. Explores practical uses of generative AI and an account-less web app design, so anyone can start practising immediately with no install and no sign-up.",
+    repo2Name: "healyoga-poc — mobile app",
+    repo2Desc:
+      "Production build by the student team, fulfilling the requirements of the CS2101 & CSC2102 Professional Software Development and Team Project modules. A full-function deployment with user account design, for a progress-tracked yoga training mobile hybrid app.",
     ...englishTermsUi,
 
     footerTagline: "Move gently. Breathe freely. Practice safely.",
@@ -193,7 +199,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     specialThanksLink: "造訪林女士的瑜伽工作坊 ↗",
     openByDesign: "開放，是我們的設計理念。",
     openByDesignBody: "為學習、身心健康與公眾利益而生。",
-    viewOnGithub: "在 GitHub 上查看專案 ↗",
+    viewOnGithub: "在 GitHub 上查看 ↗",
+    repo1Name: "healyoga — 本網頁應用",
+    repo1Desc:
+      "本專案。探索生成式 AI 的實務應用，並採用免帳號設計，讓使用者無需安裝、無需註冊即可立即開始練習。",
+    repo2Name: "healyoga-poc — 行動應用程式",
+    repo2Desc:
+      "由學生團隊開發的正式版本，完成 CS2101 與 CSC2102「專業軟體開發與團隊專案」模組的要求。屬於完整功能部署，具備使用者帳號設計，用於追蹤瑜伽訓練進度的混合式行動應用程式。",
     ...englishTermsUi,
 
     footerTagline: "輕柔活動身體，自在呼吸，安全練習。",
@@ -270,7 +282,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     specialThanksLink: "访问林女士的瑜伽工作坊 ↗",
     openByDesign: "开放，是我们的设计理念。",
     openByDesignBody: "为学习、身心健康与公众利益而生。",
-    viewOnGithub: "在 GitHub 上查看项目 ↗",
+    viewOnGithub: "在 GitHub 上查看 ↗",
+    repo1Name: "healyoga — 本网页应用",
+    repo1Desc:
+      "本项目。探索生成式 AI 的实践应用，并采用免账号设计，让用户无需安装、无需注册即可立即开始练习。",
+    repo2Name: "healyoga-poc — 移动应用",
+    repo2Desc:
+      "由学生团队开发的正式版本，完成 CS2101 与 CSC2102「专业软件开发与团队项目」模块的要求。属于全功能部署，具备用户账号设计，用于追踪瑜伽训练进度的混合式移动应用。",
     ...englishTermsUi,
 
     footerTagline: "轻柔活动身体，自在呼吸，安全练习。",
@@ -347,7 +365,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     specialThanksLink: "Lawati bengkel yoga Ms Lim ↗",
     openByDesign: "Terbuka mengikut reka bentuk.",
     openByDesignBody: "Dicipta untuk pembelajaran, kesejahteraan, dan manfaat awam.",
-    viewOnGithub: "Lihat projek ini di GitHub ↗",
+    viewOnGithub: "Lihat di GitHub ↗",
+    repo1Name: "healyoga — aplikasi web ini",
+    repo1Desc:
+      "Projek ini. Meneroka penggunaan praktikal Gen AI dan reka bentuk aplikasi web tanpa akaun, supaya sesiapa sahaja boleh mula berlatih serta-merta tanpa pemasangan dan tanpa pendaftaran.",
+    repo2Name: "healyoga-poc — aplikasi mudah alih",
+    repo2Desc:
+      "Pengeluaran oleh pasukan pelajar, memenuhi keperluan modul CS2101 & CSC2102 Pembangunan Perisian Profesional dan Projek Pasukan. Penggunaan berfungsi penuh dengan reka bentuk akaun pengguna, untuk aplikasi hibrid mudah alih latihan yoga yang menjejak kemajuan.",
     ...englishTermsUi,
 
     footerTagline: "Bergerak dengan lembut. Bernafas dengan bebas. Berlatih dengan selamat.",
@@ -424,7 +448,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     specialThanksLink: "Ms Lim அவர்களின் யோகா பயிற்சி நிலையத்தைப் பார்வையிடுங்கள் ↗",
     openByDesign: "திறந்த தன்மையே எங்கள் வடிவமைப்பு நோக்கம்.",
     openByDesignBody: "கற்றல், நலவாழ்வு, மற்றும் பொது நலனுக்காக உருவாக்கப்பட்டது.",
-    viewOnGithub: "GitHub-இல் இத்திட்டத்தைப் பார்க்க ↗",
+    viewOnGithub: "GitHub-இல் பார்க்க ↗",
+    repo1Name: "healyoga — இந்த வலை பயன்பாடு",
+    repo1Desc:
+      "இந்தத் திட்டம். நடைமுறை Gen AI பயன்பாடுகளையும், நிறுவல் இல்லாமல், பதிவு இல்லாமல் உடனடியாகப் பயிற்சியைத் தொடங்கக்கூடிய கணக்கு-இல்லா வலை பயன்பாட்டு வடிவமைப்பையும் ஆராய்கிறது.",
+    repo2Name: "healyoga-poc — மொபைல் பயன்பாடு",
+    repo2Desc:
+      "CS2101 & CSC2102 தொழில்முறை மென்பொருள் மேம்பாடு மற்றும் குழு திட்ட தொகுதிகளின் தேவைகளை நிறைவேற்றும் வகையில் மாணவர் குழுவால் தயாரிக்கப்பட்ட முழுமையான வெளியீடு. முன்னேற்றத்தைக் கண்காணிக்கும் யோகா பயிற்சிக்கான முழு செயல்பாட்டு மொபைல் ஹைபிரிட் பயன்பாட்டிற்கு, பயனர் கணக்கு வடிவமைப்புடன் கூடிய முழுமையான வரிசைப்படுத்தல்.",
     ...englishTermsUi,
 
     footerTagline: "மென்மையாக இயங்குங்கள். சுதந்திரமாக மூச்சு விடுங்கள். பாதுகாப்பாக பயிற்சி செய்யுங்கள்.",

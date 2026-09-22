@@ -500,8 +500,17 @@ export default function Home() {
             </div>
           </aside>
           <div className="open-source">
-            <div><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
-            <a href="https://github.com/drpeteryau/lts-proj-yoga" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
+            <div className="open-source-intro"><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
+            <ul className="repo-list">
+              <li>
+                <div><h3>{t.repo1Name}</h3><p>{t.repo1Desc}</p></div>
+                <a href="https://github.com/drpeteryau/healyoga" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
+              </li>
+              <li>
+                <div><h3>{t.repo2Name}</h3><p>{t.repo2Desc}</p></div>
+                <a href="https://github.com/drpeteryau/healyoga-poc" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
+              </li>
+            </ul>
           </div>
         </section>
       )}

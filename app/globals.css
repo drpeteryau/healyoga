@@ -197,10 +197,15 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .thanks h2 { margin: 0 0 6px; }
 .thanks p { margin: 0; max-width: 580px; line-height: 1.6; }
 .thanks a { display: inline-block; margin-top: 14px; color: var(--ink); font-weight: 800; }
-.open-source { margin-top: 24px; padding: 30px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); border-radius: 25px; }
-.open-source > div { display: flex; align-items: center; gap: 15px; }
+.open-source { margin-top: 24px; padding: 30px; display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--line); border-radius: 25px; }
+.open-source-intro { display: flex; align-items: center; gap: 15px; }
 .open-source p { margin: 0; line-height: 1.5; color: var(--muted); }
-.open-source a { color: var(--ink); font-weight: 800; }
+.open-source a { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.repo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.repo-list li { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 16px; border-top: 1px solid var(--line); }
+.repo-list li:first-child { padding-top: 0; border-top: 0; }
+.repo-list h3 { margin: 0 0 6px; font-size: 15px; }
+.repo-list p { max-width: 560px; }
 footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: #777; font-size: 12px; }
 .footer-links { display: flex; align-items: center; gap: 16px; }
 .footer-link { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -233,6 +238,7 @@ footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; 
   .thanks { grid-template-columns: 1fr; padding: 28px; }
   .thanks-photo { width: 180px; height: 180px; }
   .open-source, footer { align-items: flex-start; flex-direction: column; gap: 24px; }
+  .repo-list li { flex-direction: column; align-items: flex-start; gap: 10px; }
   footer { padding-left: 20px; padding-right: 20px; }
 }
 
