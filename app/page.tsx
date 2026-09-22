@@ -75,7 +75,7 @@ function VideoCard({
       <span className="thumb">
         <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" />
         <span className="thumb-shade" />
-        <span className="play-icon" aria-hidden="true">▶</span>
+        <span className="play-icon" aria-hidden="true" />
         <span className="duration">{video.duration}</span>
       </span>
       <span className="card-copy">
@@ -192,7 +192,7 @@ export default function Home() {
                 <button key={video.id} className={selectedInterview.id === video.id ? "active" : ""} onClick={() => setSelectedInterview(video)}>
                   <span className="interview-number">0{index + 1}</span>
                   <span><b>{video.title}</b><small>{video.duration} · Play interview</small></span>
-                  <span className="round-play">▶</span>
+                  <span className="round-play" aria-hidden="true" />
                 </button>
               ))}
             </div>
