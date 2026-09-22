@@ -20,6 +20,34 @@ export const localeNames: Record<Locale, string> = {
 
 type Category = "Advanced" | "Intermediate" | "Standing" | "Sitting" | "Interview";
 
+const englishTermsUi = {
+  termsEyebrow: "Legal",
+  termsTitleLine1: "Terms & Conditions",
+  termsTitleLine2: "and right of use statement",
+  termsLastUpdated: "Last updated 22 September 2026",
+  termsSection1Title: "1. About this project",
+  termsSection1Body:
+    "Heal Yoga is an academic, non-commercial project created by a University of Glasgow Singapore and Singapore Institute of Technology student team (CSC2101 & CSC2102) as part of a Professional Software Development and Team Project module. It is provided for educational, research, and public-benefit purposes only.",
+  termsSection2Title: "2. Not medical advice — your safety is your responsibility",
+  termsSection2Body:
+    "The yoga poses, stretches, and exercises demonstrated on this site are general wellness content, not medical advice. You are solely responsible for your own health and safety when following any content on this site. Please consult a qualified doctor or healthcare professional before starting any new exercise programme, particularly if you are pregnant, elderly, recovering from an injury, or have any pre-existing medical condition. Stop immediately and seek medical attention if you feel pain, dizziness, or discomfort.",
+  termsSection3Title: "3. No warranty on accuracy",
+  termsSection3Body:
+    "While we have made our best effort to ensure the information, instructions, and content on this site are accurate and safe, we do not warrant or guarantee the completeness, accuracy, reliability, or suitability of any content for any particular purpose. Heal Yoga is provided “as is” and “as available”, without warranties of any kind, express or implied.",
+  termsSection4Title: "4. Limitation of liability",
+  termsSection4Body:
+    "To the fullest extent permitted by law, the Heal Yoga project team, its student developers, faculty advisor, contributing instructors, and affiliated institutions accept no liability or responsibility for any injury, loss, damage, or adverse outcome — direct or indirect — arising from your use of, or reliance on, this site or its content. You use Heal Yoga entirely at your own risk.",
+  termsSection5Title: "5. Right of use and content ownership",
+  termsSection5Body:
+    "Video demonstrations, interviews, and photographs featured on this site are used with the informed consent of the individuals shown, for the educational purposes of this project. The underlying application source code is published as open source on GitHub for academic and non-commercial reuse (see the project repository for licence details); this does not extend to the personal likeness, voice, or image of any individual appearing in the videos or photographs, which may not be reused, copied, or redistributed separately without permission. All third-party video content is embedded via YouTube and remains subject to YouTube's own terms of service.",
+  termsSection6Title: "6. Changes to these terms",
+  termsSection6Body:
+    "We may update this page from time to time as the project evolves. Continued use of Heal Yoga after changes are posted constitutes acceptance of the revised terms.",
+  termsSection7Title: "7. Contact",
+  termsSection7Body:
+    "Questions about this statement can be directed to the faculty advisor via the GitHub project page linked in Credits.",
+};
+
 export const ui: Record<Locale, Record<string, string>> = {
   en: {
     navPractice: "Practice",
@@ -89,6 +117,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     openByDesign: "Open by design.",
     openByDesignBody: "Created for learning, wellbeing, and public benefit.",
     viewOnGithub: "View the project on GitHub ↗",
+    ...englishTermsUi,
 
     footerTagline: "Move gently. Breathe freely. Practice safely.",
     footerAttribution: "University of Glasgow · Academic project",
@@ -165,6 +194,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     openByDesign: "開放，是我們的設計理念。",
     openByDesignBody: "為學習、身心健康與公眾利益而生。",
     viewOnGithub: "在 GitHub 上查看專案 ↗",
+    ...englishTermsUi,
 
     footerTagline: "輕柔活動身體，自在呼吸，安全練習。",
     footerAttribution: "格拉斯哥大學 · 學術專案",
@@ -241,6 +271,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     openByDesign: "开放，是我们的设计理念。",
     openByDesignBody: "为学习、身心健康与公众利益而生。",
     viewOnGithub: "在 GitHub 上查看项目 ↗",
+    ...englishTermsUi,
 
     footerTagline: "轻柔活动身体，自在呼吸，安全练习。",
     footerAttribution: "格拉斯哥大学 · 学术项目",
@@ -317,6 +348,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     openByDesign: "Terbuka mengikut reka bentuk.",
     openByDesignBody: "Dicipta untuk pembelajaran, kesejahteraan, dan manfaat awam.",
     viewOnGithub: "Lihat projek ini di GitHub ↗",
+    ...englishTermsUi,
 
     footerTagline: "Bergerak dengan lembut. Bernafas dengan bebas. Berlatih dengan selamat.",
     footerAttribution: "Universiti Glasgow · Projek Akademik",
@@ -393,6 +425,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     openByDesign: "திறந்த தன்மையே எங்கள் வடிவமைப்பு நோக்கம்.",
     openByDesignBody: "கற்றல், நலவாழ்வு, மற்றும் பொது நலனுக்காக உருவாக்கப்பட்டது.",
     viewOnGithub: "GitHub-இல் இத்திட்டத்தைப் பார்க்க ↗",
+    ...englishTermsUi,
 
     footerTagline: "மென்மையாக இயங்குங்கள். சுதந்திரமாக மூச்சு விடுங்கள். பாதுகாப்பாக பயிற்சி செய்யுங்கள்.",
     footerAttribution: "கிளாஸ்கோ பல்கலைக்கழகம் · கல்விசார் திட்டம்",

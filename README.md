@@ -22,9 +22,9 @@ Live site: https://drpeteryau.github.io/healyoga
   behind the project.
 - **Credits** — the student development team, faculty advisor, supporting
   institutions, and special thanks to the project's yoga instructor.
-- **Multilingual UI** — English, Traditional Chinese, and Simplified
-  Chinese, with automatic browser-locale detection and a manual language
-  switcher (`app/i18n.ts`).
+- **Multilingual UI** — English, Traditional Chinese, Simplified Chinese,
+  Tamil, and Malay, with automatic browser-locale detection and a manual
+  language switcher (`app/i18n.ts`).
 
 ## Tech stack
 
