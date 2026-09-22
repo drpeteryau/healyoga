@@ -60,6 +60,9 @@ nav button {
   cursor: pointer;
 }
 nav button.active { color: var(--ink); border-color: var(--aqua); }
+.lang-switcher { display: flex; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.lang-switcher button { border: 0; background: none; border-radius: 999px; padding: 7px 13px; font-size: 12px; font-weight: 700; color: #777; cursor: pointer; }
+.lang-switcher button.active { background: var(--ink); color: #fff; }
 .hero {
   max-width: 1440px;
   margin: auto;
@@ -208,6 +211,7 @@ footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; 
   .brand { margin-bottom: 13px; }
   nav { justify-content: space-between; gap: 0; height: 46px; }
   nav button { flex: 1; }
+  .lang-switcher { margin-top: 12px; width: 100%; justify-content: center; }
   .hero, .library, .interview-page, .credits-page { padding-left: 20px; padding-right: 20px; }
   .hero { gap: 42px; min-height: auto; }
   h1 { letter-spacing: -2.5px; }

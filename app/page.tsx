@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { categoryLabels, localeLabels, localeNames, locales, ui, videoText, type Locale } from "./i18n";
 
 type Video = {
   id: string;
@@ -198,12 +199,21 @@ const practiceVideos = videos.filter((video) => video.category !== "Interview");
 const interviewVideos = videos.filter((video) => video.category === "Interview");
 const categories = ["All", "Standing", "Sitting", "Intermediate", "Advanced"] as const;
 
-function VideoPlayer({ video }: { video: Video }) {
+function localizedVideo(video: Video, locale: Locale) {
+  const text = videoText[locale][video.id] ?? videoText.en[video.id];
+  return {
+    title: text?.title ?? video.title,
+    description: text?.description ?? video.description,
+  };
+}
+
+function VideoPlayer({ video, locale }: { video: Video; locale: Locale }) {
+  const { title } = localizedVideo(video, locale);
   return (
     <div className="player-shell">
       <iframe
         src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
-        title={video.title}
+        title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />
@@ -215,16 +225,19 @@ function VideoCard({
   video,
   selected,
   onSelect,
+  locale,
 }: {
   video: Video;
   selected: boolean;
   onSelect: () => void;
+  locale: Locale;
 }) {
+  const { title, description } = localizedVideo(video, locale);
   return (
     <button
       className={`video-card ${selected ? "selected" : ""}`}
       onClick={onSelect}
-      aria-label={`Play ${video.title}`}
+      aria-label={title}
       aria-pressed={selected}
     >
       <span className="thumb">
@@ -234,11 +247,29 @@ function VideoCard({
         <span className="duration">{video.duration}</span>
       </span>
       <span className="card-copy">
-        <span className="category">{video.category}</span>
-        <strong>{video.title}</strong>
-        {video.description && <span className="watch-label">{video.description}</span>}
+        <span className="category">{categoryLabels[locale][video.category]}</span>
+        <strong>{title}</strong>
+        {description && <span className="watch-label">{description}</span>}
       </span>
     </button>
+  );
+}
+
+function LanguageSwitcher({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
+  return (
+    <div className="lang-switcher" aria-label={ui[locale].languageLabel}>
+      {locales.map((l) => (
+        <button
+          key={l}
+          className={locale === l ? "active" : ""}
+          onClick={() => onChange(l)}
+          aria-pressed={locale === l}
+          title={localeNames[l]}
+        >
+          {localeLabels[l]}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -248,6 +279,7 @@ export default function Home() {
   const [selectedInterview, setSelectedInterview] = useState(interviewVideos[0]);
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
   const [query, setQuery] = useState("");
+  const [locale, setLocale] = useState<Locale>("en");
 
   useEffect(() => {
     const syncHash = () => {
@@ -259,12 +291,36 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
+  useEffect(() => {
+    const detectLocale = () => {
+      const stored = window.localStorage.getItem("healyoga-locale");
+      if (stored && (locales as string[]).includes(stored)) return stored as Locale;
+      const browser = navigator.language.toLowerCase();
+      if (browser.startsWith("zh")) {
+        return browser.includes("hans") || browser.includes("cn") || browser.includes("sg") ? "zh-Hans" : "zh-Hant";
+      }
+      return null;
+    };
+    const detected = detectLocale();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time locale hydration from browser storage/language, not an external subscription
+    if (detected) setLocale(detected);
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("healyoga-locale", locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
+
+  const t = ui[locale];
+  const catLabel = categoryLabels[locale];
+
   const filteredVideos = useMemo(() => {
     return practiceVideos.filter((video) => {
       const inCategory = category === "All" || video.category === category;
-      return inCategory && video.title.toLowerCase().includes(query.toLowerCase());
+      const title = (videoText[locale][video.id] ?? videoText.en[video.id])?.title ?? video.title;
+      return inCategory && title.toLowerCase().includes(query.toLowerCase());
     });
-  }, [category, query]);
+  }, [category, query, locale]);
 
   function navigate(next: "practice" | "interviews" | "credits") {
     window.location.hash = `/${next}`;
@@ -275,32 +331,33 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <button className="brand" onClick={() => navigate("practice")} aria-label="Heal Yoga home">
+        <button className="brand" onClick={() => navigate("practice")} aria-label={t.brandHome}>
           <span className="brand-mark">H</span>
           <span><b>Heal</b><strong>Yoga</strong></span>
         </button>
         <nav aria-label="Main navigation">
-          <button className={page === "practice" ? "active" : ""} onClick={() => navigate("practice")}>Practice</button>
-          <button className={page === "interviews" ? "active" : ""} onClick={() => navigate("interviews")}>Interviews</button>
-          <button className={page === "credits" ? "active" : ""} onClick={() => navigate("credits")}>Credits</button>
+          <button className={page === "practice" ? "active" : ""} onClick={() => navigate("practice")}>{t.navPractice}</button>
+          <button className={page === "interviews" ? "active" : ""} onClick={() => navigate("interviews")}>{t.navInterviews}</button>
+          <button className={page === "credits" ? "active" : ""} onClick={() => navigate("credits")}>{t.navCredits}</button>
         </nav>
+        <LanguageSwitcher locale={locale} onChange={setLocale} />
       </header>
 
       {page === "practice" && (
         <>
           <section className="hero">
             <div>
-              <span className="eyebrow">Movement for every body</span>
-              <h1>Find your balance,<br /><em>one pose at a time.</em></h1>
-              <p>Accessible, instructor-led yoga demonstrations designed for students, older adults, and everyone beginning their wellness journey.</p>
+              <span className="eyebrow">{t.heroEyebrow}</span>
+              <h1>{t.heroTitleLine1}<br /><em>{t.heroTitleLine2}</em></h1>
+              <p>{t.heroBody}</p>
               <button className="primary" onClick={() => document.getElementById("library")?.scrollIntoView({ behavior: "smooth" })}>
-                Explore 22 practices <span>↓</span>
+                {t.heroCta} <span>↓</span>
               </button>
             </div>
             <div className="featured">
-              <VideoPlayer video={selectedPractice} />
+              <VideoPlayer video={selectedPractice} locale={locale} />
               <div className="featured-meta">
-                <div><span>{selectedPractice.category}</span><h2>{selectedPractice.title}</h2></div>
+                <div><span>{catLabel[selectedPractice.category]}</span><h2>{localizedVideo(selectedPractice, locale).title}</h2></div>
                 <span className="time">{selectedPractice.duration}</span>
               </div>
             </div>
@@ -308,24 +365,24 @@ export default function Home() {
 
           <section className="library" id="library">
             <div className="section-heading">
-              <div><span className="eyebrow">Guided library</span><h2>Choose your practice</h2></div>
+              <div><span className="eyebrow">{t.libraryEyebrow}</span><h2>{t.libraryTitle}</h2></div>
               <label className="search">
                 <span aria-hidden="true">⌕</span>
-                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search poses" aria-label="Search yoga poses" />
+                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} aria-label={t.searchAriaLabel} />
               </label>
             </div>
-            <div className="filters" aria-label="Filter by practice type">
-              {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
+            <div className="filters" aria-label={t.filtersAriaLabel}>
+              {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{catLabel[item]}</button>)}
             </div>
             <div className="video-grid">
               {filteredVideos.map((video) => (
-                <VideoCard key={video.id} video={video} selected={selectedPractice.id === video.id} onSelect={() => {
+                <VideoCard key={video.id} video={video} selected={selectedPractice.id === video.id} locale={locale} onSelect={() => {
                   setSelectedPractice(video);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }} />
               ))}
             </div>
-            {filteredVideos.length === 0 && <p className="empty">No poses match your search. Try a different term.</p>}
+            {filteredVideos.length === 0 && <p className="empty">{t.emptyResults}</p>}
           </section>
         </>
       )}
@@ -333,20 +390,20 @@ export default function Home() {
       {page === "interviews" && (
         <section className="interview-page">
           <div className="page-intro">
-            <span className="eyebrow">Conversations on wellbeing</span>
-            <h1>Hear from the people<br /><em>behind the practice.</em></h1>
-            <p>Short perspectives from clinical and yoga professionals on accessible movement, healthy ageing, and the thinking behind Heal Yoga.</p>
+            <span className="eyebrow">{t.interviewsEyebrow}</span>
+            <h1>{t.interviewsTitleLine1}<br /><em>{t.interviewsTitleLine2}</em></h1>
+            <p>{t.interviewsBody}</p>
           </div>
           <div className="interview-layout">
             <div>
-              <VideoPlayer video={selectedInterview} />
-              <div className="interview-now"><span>Now playing</span><h2>{selectedInterview.title}</h2></div>
+              <VideoPlayer video={selectedInterview} locale={locale} />
+              <div className="interview-now"><span>{t.nowPlaying}</span><h2>{localizedVideo(selectedInterview, locale).title}</h2></div>
             </div>
             <div className="interview-list">
               {interviewVideos.map((video, index) => (
                 <button key={video.id} className={selectedInterview.id === video.id ? "active" : ""} onClick={() => setSelectedInterview(video)}>
                   <span className="interview-number">0{index + 1}</span>
-                  <span><b>{video.title}</b><small>{video.duration} · Play interview</small></span>
+                  <span><b>{localizedVideo(video, locale).title}</b><small>{video.duration} · {t.playInterview}</small></span>
                   <span className="round-play" aria-hidden="true" />
                 </button>
               ))}
@@ -355,27 +412,27 @@ export default function Home() {
 
           <div className="written-interview">
             <figure className="written-photo">
-              <img src="/kamala.jpg" alt="A/Prof Kamala Devi" loading="lazy" />
+              <img src="/kamala.jpg" alt={t.writtenPhotoName} loading="lazy" />
               <figcaption>
-                <b>A/Prof Kamala Devi</b>
-                <small>School of Medicine, Dentistry &amp; Nursing<br />University of Glasgow</small>
+                <b>{t.writtenPhotoName}</b>
+                <small>{t.writtenPhotoAffiliation1}<br />{t.writtenPhotoAffiliation2}</small>
               </figcaption>
             </figure>
             <div className="written-copy">
-              <span className="eyebrow">In her own words</span>
-              <h2>A nursing perspective on Heal Yoga</h2>
-              <p>The objectives of launching this app are to help seniors build a foundation in yoga practice; help them turn their practice into a habit; help them strengthen their body, calm their mind and feel happy through regular practice.</p>
-              <p>There are numerous yoga poses. This app highlights a few well-known and accessible poses for seniors, as it is crucial for seniors to learn useful poses while ensuring the poses are not too difficult to follow.</p>
-              <p>The term &ldquo;seniors&rdquo; is used loosely here: it can mean retirees; people who have reached the retirement age but are working; people who have not hit the retirement age but choose to step down; or working adults who feel that they lack the stamina to exercise but want to try out yoga.</p>
-              <p>This app contains chair yoga poses for beginners, as well as intermediate and advanced poses on the mat. As this app caters to seniors who do self-practice without guidance, the poses are kept simple and accessible. The sequence is designed so seniors get to warm up, do the poses and cool down. The poses aim to provide stretching, muscle strengthening, cardio training, balancing and breath work, and cover the sagittal, frontal and transverse planes of motion so practice is well covered in all directions.</p>
-              <p>An important reminder for seniors using this app is to breathe deeply and calmly during their practice, which is the essence of yoga. Regular yoga practice helps to strengthen the body, align posture, calm the mind, focus better, improve endurance and promote positive living.</p>
-              <h3>Content</h3>
-              <p><b>Chair yoga (beginner&rsquo;s level)</b> &mdash; Practising with a chair helps seniors ease into poses they find challenging and stay in the pose longer to reap its benefits. Chair yoga is highly recommended when ground practice is inaccessible or impractical.</p>
-              <p><b>Sun salutation (intermediate and advanced level)</b> &mdash; An important flow sequence in yoga asana which promotes spine health, shoulders and chest opening, and limbs and core strength. It can be used as a warm-up once seniors become familiar with the poses; intermediate level focuses on isolated poses while advanced level focuses on the flow sequence and cardio training.</p>
-              <h3>App features</h3>
-              <p>To encourage regular and frequent practice, the app helps seniors track their progress by showing their weekly cumulative practice duration. Once a milestone is reached, they receive a trophy. We also track how seniors feel by asking a number of questions after a month of practice, to increase their body awareness.</p>
-              <h3>A nursing standpoint</h3>
-              <p>Regular yoga practice offers multidimensional health benefits that are particularly relevant for seniors. Physiologically, yoga enhances musculoskeletal strength, joint mobility, and balance, thereby reducing the risk of falls, a major concern in geriatric care. Controlled breathing and mindful movement improve cardiopulmonary endurance and support better management of chronic conditions such as hypertension, diabetes, and arthritis. Psychologically, yoga fosters relaxation, reduces anxiety, and promotes emotional resilience, which is essential for maintaining mental wellbeing in later life. Importantly, yoga encourages self-efficacy and active participation in health maintenance, aligning with nursing goals of empowering individuals to take ownership of their health and promoting holistic, person-centred care.</p>
+              <span className="eyebrow">{t.writtenEyebrow}</span>
+              <h2>{t.writtenTitle}</h2>
+              <p>{t.writtenP1}</p>
+              <p>{t.writtenP2}</p>
+              <p>{t.writtenP3}</p>
+              <p>{t.writtenP4}</p>
+              <p>{t.writtenP5}</p>
+              <h3>{t.writtenContentHeading}</h3>
+              <p><b>{t.writtenContentChairLabel}</b>{t.writtenContentChairBody}</p>
+              <p><b>{t.writtenContentSunLabel}</b>{t.writtenContentSunBody}</p>
+              <h3>{t.writtenFeaturesHeading}</h3>
+              <p>{t.writtenFeaturesBody}</p>
+              <h3>{t.writtenNursingHeading}</h3>
+              <p>{t.writtenNursingBody}</p>
             </div>
           </div>
         </section>
@@ -384,15 +441,15 @@ export default function Home() {
       {page === "credits" && (
         <section className="credits-page">
           <div className="credits-hero">
-            <span className="eyebrow">A university collaboration</span>
-            <h1>Built with care.<br /><em>Shared with purpose.</em></h1>
-            <p>Heal Yoga is a higher education initiative using open-source mobile technology to make yoga practice and public health awareness more accessible to youth and older adults.</p>
+            <span className="eyebrow">{t.creditsEyebrow}</span>
+            <h1>{t.creditsTitleLine1}<br /><em>{t.creditsTitleLine2}</em></h1>
+            <p>{t.creditsBody}</p>
           </div>
           <div className="credits-grid">
             <article className="team-card">
-              <span className="card-kicker">Development team</span>
+              <span className="card-kicker">{t.devTeamKicker}</span>
               <h2>CSC2101 & CSC2102</h2>
-              <p className="course">Professional Software Development & Team Project</p>
+              <p className="course">{t.devTeamCourse}</p>
               <div className="member-grid">
                 {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name) => (
                   <div key={name}><b>{name}</b></div>
@@ -400,39 +457,25 @@ export default function Home() {
               </div>
             </article>
             <div className="credit-stack">
-              <article>
-                <span>Faculty advisor</span>
-                <h3>Dr Peter CY Yau</h3>
-                <a href="https://github.com/drpeteryau/" target="_blank" rel="noreferrer">github.com/drpeteryau ↗</a>
-              </article>
-              <article>
-                <span>Supported by</span>
-                <h3>University of Glasgow</h3>
-                <p className="schools">School of Computing Science<br />School of Medicine, Dentistry &amp; Nursing</p>
-                <h3>Singapore Institute of Technology</h3>
-              </article>
+              <article><span>{t.facultyAdvisorLabel}</span><h3>{t.facultyAdvisorName}</h3></article>
+              <article><span>{t.supportedByLabel}</span><h3>{t.supportedBy1}</h3><p>{t.supportedBy2}<br />{t.supportedBy3}</p></article>
             </div>
           </div>
           <aside className="thanks">
             <span className="quote-mark">“</span>
-            <div>
-              <span className="eyebrow">Special thanks</span>
-              <h2>Ms Lim Li Peng</h2>
-              <p>This project simply could not have come together without Ms Lim Li Peng's generous support. As our professional yoga instructor, she gave countless hours to the many rounds of video filming — patiently demonstrating and re-demonstrating every pose, guiding retakes, and sharing her expertise so each movement would be safe and easy to follow. Her time, care, and encouragement carried this project from an idea to something we're genuinely proud of, and we're deeply grateful for it.</p>
-              <a href="https://yoga8288.com/" target="_blank" rel="noreferrer">Visit Ms Lim's yoga workshop ↗</a>
-            </div>
+            <div><span className="eyebrow">{t.specialThanksLabel}</span><h2>{t.specialThanksName}</h2><p>{t.specialThanksBody}</p></div>
           </aside>
           <div className="open-source">
-            <div><span className="brand-mark">H</span><p><b>Open by design.</b><br />Created for learning, wellbeing, and public benefit.</p></div>
-            <a href="https://github.com/drpeteryau/lts-proj-yoga" target="_blank" rel="noreferrer">View the project on GitHub ↗</a>
+            <div><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
+            <a href="https://github.com/drpeteryau/lts-proj-yoga" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
           </div>
         </section>
       )}
 
       <footer>
         <button className="brand" onClick={() => navigate("practice")}><span className="brand-mark">H</span><span><b>Heal</b><strong>Yoga</strong></span></button>
-        <p>Move gently. Breathe freely. Practice safely.</p>
-        <span>University of Glasgow · Academic project</span>
+        <p>{t.footerTagline}</p>
+        <span>{t.footerAttribution}</span>
       </footer>
     </main>
   );
