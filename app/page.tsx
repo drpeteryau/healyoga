@@ -614,6 +614,9 @@ export default function Home() {
 
             <h2>{t.termsSection7Title}</h2>
             <p>{t.termsSection7Body}</p>
+
+            <h2>{t.termsSection8Title}</h2>
+            <p>{t.termsSection8Body}</p>
           </div>
         </section>
       )}
