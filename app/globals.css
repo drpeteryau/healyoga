@@ -178,12 +178,16 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .member-grid b { margin-top: 15px; font-size: 17px; }
 .credit-stack { display: grid; gap: 24px; }
 .credit-stack h3 { font-size: 25px; margin: 12px 0 0; letter-spacing: -1px; }
+.credit-stack h3 + h3 { margin-top: 18px; }
 .credit-stack p { color: var(--muted); line-height: 1.5; }
+.credit-stack p.schools { font-size: 15px; margin-top: 6px; }
+.credit-stack article > a { display: inline-block; margin-top: 12px; color: var(--ink); font-weight: 800; font-size: 15px; }
 .thanks { margin-top: 24px; border-radius: 25px; padding: 42px; background: var(--aqua); display: grid; grid-template-columns: 120px 1fr; align-items: center; }
 .thanks .quote-mark { font: 130px/1 Georgia, serif; height: 75px; }
 .thanks .eyebrow::before { background: #111; }
 .thanks h2 { margin: 0 0 6px; }
 .thanks p { margin: 0; max-width: 580px; line-height: 1.6; }
+.thanks a { display: inline-block; margin-top: 14px; color: var(--ink); font-weight: 800; }
 .open-source { margin-top: 24px; padding: 30px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); border-radius: 25px; }
 .open-source > div { display: flex; align-items: center; gap: 15px; }
 .open-source p { margin: 0; line-height: 1.5; color: var(--muted); }

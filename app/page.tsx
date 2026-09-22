@@ -394,19 +394,33 @@ export default function Home() {
               <h2>CSC2101 & CSC2102</h2>
               <p className="course">Professional Software Development & Team Project</p>
               <div className="member-grid">
-                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name, i) => (
-                  <div key={name}><span>{String(i + 1).padStart(2, "0")}</span><b>{name}</b></div>
+                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name) => (
+                  <div key={name}><b>{name}</b></div>
                 ))}
               </div>
             </article>
             <div className="credit-stack">
-              <article><span>Faculty advisor</span><h3>Dr Peter CY Yau</h3></article>
-              <article><span>Supported by</span><h3>School of Computing Science</h3><p>& School of Medicine, Dentistry & Nursing<br />University of Glasgow</p></article>
+              <article>
+                <span>Faculty advisor</span>
+                <h3>Dr Peter CY Yau</h3>
+                <a href="https://github.com/drpeteryau/" target="_blank" rel="noreferrer">github.com/drpeteryau ↗</a>
+              </article>
+              <article>
+                <span>Supported by</span>
+                <h3>University of Glasgow</h3>
+                <p className="schools">School of Computing Science<br />School of Medicine, Dentistry &amp; Nursing</p>
+                <h3>Singapore Institute of Technology</h3>
+              </article>
             </div>
           </div>
           <aside className="thanks">
             <span className="quote-mark">“</span>
-            <div><span className="eyebrow">Special thanks</span><h2>Ms Lim Li Peng</h2><p>Professional yoga instructor leading the demonstrations featured throughout Heal Yoga.</p></div>
+            <div>
+              <span className="eyebrow">Special thanks</span>
+              <h2>Ms Lim Li Peng</h2>
+              <p>This project simply could not have come together without Ms Lim Li Peng's generous support. As our professional yoga instructor, she gave countless hours to the many rounds of video filming — patiently demonstrating and re-demonstrating every pose, guiding retakes, and sharing her expertise so each movement would be safe and easy to follow. Her time, care, and encouragement carried this project from an idea to something we're genuinely proud of, and we're deeply grateful for it.</p>
+              <a href="https://yoga8288.com/" target="_blank" rel="noreferrer">Visit Ms Lim's yoga workshop ↗</a>
+            </div>
           </aside>
           <div className="open-source">
             <div><span className="brand-mark">H</span><p><b>Open by design.</b><br />Created for learning, wellbeing, and public benefit.</p></div>
