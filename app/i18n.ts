@@ -131,6 +131,15 @@ export const ui: Record<Locale, Record<string, string>> = {
     termsOnlyNotice: "",
 
     languageLabel: "Language",
+
+    disclaimerTitle: "Before you begin",
+    disclaimerPoint1: "This is a student learning and teaching project, created for educational purposes.",
+    disclaimerPoint2: "We do our best to keep the content accurate, but we cannot guarantee that all information is correct.",
+    disclaimerPoint3: "Languages other than English are machine-translated and may contain errors.",
+    disclaimerPoint4: "Please be mindful of your own safety, and you are responsible for yourself when following any content on this site.",
+    disclaimerRemember: "Remember my choice for this session",
+    disclaimerAgree: "I Agree, Continue",
+    disclaimerDisagree: "I Disagree",
   },
   "zh-Hant": {
     navPractice: "練習",
@@ -214,6 +223,15 @@ export const ui: Record<Locale, Record<string, string>> = {
     termsOnlyNotice: "本頁面（條款及細則與使用權聲明）僅提供英文版本。",
 
     languageLabel: "語言",
+
+    disclaimerTitle: "開始之前，請先閱讀",
+    disclaimerPoint1: "這是一項學生教學專案，僅供教育用途而製作。",
+    disclaimerPoint2: "我們已盡力確保內容正確，但無法保證所有資訊皆完全無誤。",
+    disclaimerPoint3: "英文以外的語言版本均由機器翻譯產生，可能有誤譯之處。",
+    disclaimerPoint4: "使用本網站任何內容時，請留意自身安全，並自行承擔相關責任。",
+    disclaimerRemember: "在本次瀏覽期間記住我的選擇",
+    disclaimerAgree: "我同意，繼續瀏覽",
+    disclaimerDisagree: "我不同意",
   },
   "zh-Hans": {
     navPractice: "练习",
@@ -297,6 +315,15 @@ export const ui: Record<Locale, Record<string, string>> = {
     termsOnlyNotice: "本页面（条款与条件及使用权声明）仅提供英文版本。",
 
     languageLabel: "语言",
+
+    disclaimerTitle: "开始之前，请先阅读",
+    disclaimerPoint1: "这是一项学生教学项目，仅供教育用途而制作。",
+    disclaimerPoint2: "我们已尽力确保内容正确，但无法保证所有信息皆完全无误。",
+    disclaimerPoint3: "英文以外的语言版本均由机器翻译生成，可能存在误译之处。",
+    disclaimerPoint4: "使用本网站任何内容时，请留意自身安全，并自行承担相关责任。",
+    disclaimerRemember: "在本次浏览期间记住我的选择",
+    disclaimerAgree: "我同意，继续浏览",
+    disclaimerDisagree: "我不同意",
   },
   ms: {
     navPractice: "Latihan",
@@ -380,6 +407,15 @@ export const ui: Record<Locale, Record<string, string>> = {
     termsOnlyNotice: "Halaman ini (Terma & Syarat serta Notis Pelesenan) hanya tersedia dalam bahasa Inggeris.",
 
     languageLabel: "Bahasa",
+
+    disclaimerTitle: "Sebelum anda bermula",
+    disclaimerPoint1: "Ini adalah projek pembelajaran dan pengajaran pelajar, dicipta untuk tujuan pendidikan.",
+    disclaimerPoint2: "Kami berusaha sedaya upaya untuk memastikan kandungan ini tepat, tetapi kami tidak dapat menjamin semua maklumat adalah betul.",
+    disclaimerPoint3: "Bahasa selain bahasa Inggeris diterjemahkan secara automatik oleh mesin dan mungkin mengandungi kesilapan.",
+    disclaimerPoint4: "Sila ambil perhatian terhadap keselamatan diri anda, dan anda bertanggungjawab ke atas diri sendiri semasa mengikuti mana-mana kandungan di laman web ini.",
+    disclaimerRemember: "Ingat pilihan saya untuk sesi ini",
+    disclaimerAgree: "Saya Setuju, Teruskan",
+    disclaimerDisagree: "Saya Tidak Setuju",
   },
   ta: {
     navPractice: "பயிற்சி",
@@ -463,6 +499,15 @@ export const ui: Record<Locale, Record<string, string>> = {
     termsOnlyNotice: "இந்தப் பக்கம் (விதிமுறைகள் & நிபந்தனைகள் மற்றும் உரிம அறிவிப்பு) ஆங்கிலத்தில் மட்டுமே கிடைக்கும்.",
 
     languageLabel: "மொழி",
+
+    disclaimerTitle: "தொடங்குவதற்கு முன்",
+    disclaimerPoint1: "இது கல்வி நோக்கங்களுக்காக உருவாக்கப்பட்ட ஒரு மாணவர் கற்றல் மற்றும் கற்பித்தல் திட்டமாகும்.",
+    disclaimerPoint2: "உள்ளடக்கத்தை துல்லியமாக வைத்திருக்க நாங்கள் எங்களால் இயன்றவரை முயற்சிக்கிறோம், ஆனால் அனைத்து தகவல்களும் சரியானவை என்பதை உறுதிசெய்ய முடியாது.",
+    disclaimerPoint3: "ஆங்கிலம் தவிர்த்த மொழிகள் இயந்திர மொழிபெயர்ப்பால் தரப்பட்டவை, அவற்றில் பிழைகள் இருக்கக்கூடும்.",
+    disclaimerPoint4: "இந்த தளத்தில் உள்ள எந்தவொரு உள்ளடக்கத்தையும் பின்பற்றும்போது உங்கள் சொந்த பாதுகாப்பில் கவனமாக இருங்கள்; நீங்களே அதற்குப் பொறுப்பு.",
+    disclaimerRemember: "இந்த அமர்வுக்கு எனது தேர்வை நினைவில் வையுங்கள்",
+    disclaimerAgree: "நான் ஒப்புக்கொள்கிறேன், தொடரவும்",
+    disclaimerDisagree: "நான் ஒப்புக்கொள்ளவில்லை",
   },
 };
 
