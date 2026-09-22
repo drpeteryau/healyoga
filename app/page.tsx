@@ -491,7 +491,7 @@ export default function Home() {
             </div>
           </div>
           <aside className="thanks">
-            <img className="thanks-photo" src={`${assetBase}/lim-li-peng.jpg`} alt="Ms Lim Li Peng" loading="lazy" />
+            <img className="thanks-photo" src={`${assetBase}/lim-li-peng.jpg`} alt={t.specialThanksName} loading="lazy" />
             <div>
               <span className="eyebrow">{t.specialThanksLabel}</span>
               <h2>{t.specialThanksName}</h2>
