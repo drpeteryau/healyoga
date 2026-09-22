@@ -197,6 +197,32 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <div className="written-interview">
+            <figure className="written-photo">
+              <img src="/kamala.jpg" alt="A/Prof Kamala Devi" loading="lazy" />
+              <figcaption>
+                <b>A/Prof Kamala Devi</b>
+                <small>School of Medicine, Dentistry &amp; Nursing<br />University of Glasgow</small>
+              </figcaption>
+            </figure>
+            <div className="written-copy">
+              <span className="eyebrow">In her own words</span>
+              <h2>A nursing perspective on Heal Yoga</h2>
+              <p>The objectives of launching this app are to help seniors build a foundation in yoga practice; help them turn their practice into a habit; help them strengthen their body, calm their mind and feel happy through regular practice.</p>
+              <p>There are numerous yoga poses. This app highlights a few well-known and accessible poses for seniors, as it is crucial for seniors to learn useful poses while ensuring the poses are not too difficult to follow.</p>
+              <p>The term &ldquo;seniors&rdquo; is used loosely here: it can mean retirees; people who have reached the retirement age but are working; people who have not hit the retirement age but choose to step down; or working adults who feel that they lack the stamina to exercise but want to try out yoga.</p>
+              <p>This app contains chair yoga poses for beginners, as well as intermediate and advanced poses on the mat. As this app caters to seniors who do self-practice without guidance, the poses are kept simple and accessible. The sequence is designed so seniors get to warm up, do the poses and cool down. The poses aim to provide stretching, muscle strengthening, cardio training, balancing and breath work, and cover the sagittal, frontal and transverse planes of motion so practice is well covered in all directions.</p>
+              <p>An important reminder for seniors using this app is to breathe deeply and calmly during their practice, which is the essence of yoga. Regular yoga practice helps to strengthen the body, align posture, calm the mind, focus better, improve endurance and promote positive living.</p>
+              <h3>Content</h3>
+              <p><b>Chair yoga (beginner&rsquo;s level)</b> &mdash; Practising with a chair helps seniors ease into poses they find challenging and stay in the pose longer to reap its benefits. Chair yoga is highly recommended when ground practice is inaccessible or impractical.</p>
+              <p><b>Sun salutation (intermediate and advanced level)</b> &mdash; An important flow sequence in yoga asana which promotes spine health, shoulders and chest opening, and limbs and core strength. It can be used as a warm-up once seniors become familiar with the poses; intermediate level focuses on isolated poses while advanced level focuses on the flow sequence and cardio training.</p>
+              <h3>App features</h3>
+              <p>To encourage regular and frequent practice, the app helps seniors track their progress by showing their weekly cumulative practice duration. Once a milestone is reached, they receive a trophy. We also track how seniors feel by asking a number of questions after a month of practice, to increase their body awareness.</p>
+              <h3>A nursing standpoint</h3>
+              <p>Regular yoga practice offers multidimensional health benefits that are particularly relevant for seniors. Physiologically, yoga enhances musculoskeletal strength, joint mobility, and balance, thereby reducing the risk of falls, a major concern in geriatric care. Controlled breathing and mindful movement improve cardiopulmonary endurance and support better management of chronic conditions such as hypertension, diabetes, and arthritis. Psychologically, yoga fosters relaxation, reduces anxiety, and promotes emotional resilience, which is essential for maintaining mental wellbeing in later life. Importantly, yoga encourages self-efficacy and active participation in health maintenance, aligning with nursing goals of empowering individuals to take ownership of their health and promoting holistic, person-centred care.</p>
+            </div>
+          </div>
         </section>
       )}
 
