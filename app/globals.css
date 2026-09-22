@@ -185,8 +185,8 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .credit-stack p { color: var(--muted); line-height: 1.5; }
 .credit-stack p.schools { font-size: 15px; margin-top: 6px; }
 .credit-stack article > a { display: inline-block; margin-top: 12px; color: var(--ink); font-weight: 800; font-size: 15px; }
-.thanks { margin-top: 24px; border-radius: 25px; padding: 42px; background: var(--aqua); display: grid; grid-template-columns: 120px 1fr; align-items: center; }
-.thanks .quote-mark { font: 130px/1 Georgia, serif; height: 75px; }
+.thanks { margin-top: 24px; border-radius: 25px; padding: 42px; background: var(--aqua); display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 30px; }
+.thanks-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
 .thanks .eyebrow::before { background: #111; }
 .thanks h2 { margin: 0 0 6px; }
 .thanks p { margin: 0; max-width: 580px; line-height: 1.6; }
@@ -221,7 +221,7 @@ footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; 
   .member-grid { grid-template-columns: 1fr; }
   .team-card, .credit-stack article { padding: 26px; }
   .thanks { grid-template-columns: 1fr; padding: 28px; }
-  .thanks .quote-mark { height: 70px; }
+  .thanks-photo { width: 88px; height: 88px; }
   .open-source, footer { align-items: flex-start; flex-direction: column; gap: 24px; }
   footer { padding-left: 20px; padding-right: 20px; }
 }
