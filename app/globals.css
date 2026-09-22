@@ -203,6 +203,7 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .thanks a { display: inline-block; margin-top: 14px; color: var(--ink); font-weight: 800; }
 .open-source { margin-top: 24px; padding: 30px; display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--line); border-radius: 25px; }
 .open-source-intro { display: flex; align-items: center; gap: 15px; }
+.open-source-intro .brand-mark { border-radius: 50%; transform: none; }
 .open-source p { margin: 0; line-height: 1.5; color: var(--muted); }
 .open-source a { color: var(--ink); font-weight: 800; white-space: nowrap; }
 .repo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
