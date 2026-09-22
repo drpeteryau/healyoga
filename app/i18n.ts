@@ -274,15 +274,15 @@ export const categoryLabels: Record<Locale, Record<Category | "All", string>> = 
   },
 };
 
-type VideoText = { title: string; description?: string };
+type VideoText = { title: string; description?: string; question?: string };
 
 export const videoText: Record<Locale, Record<string, VideoText>> = {
   en: {
-    egNdbDDS_Ws: { title: "Interview 01 — A/Prof CK Seow" },
-    dyYVJnccUx0: { title: "Interview 02 — A/Prof CK Seow" },
-    IsGAZrjEMp4: { title: "Interview 03 — Ms LP Lim" },
-    jV6KZ2no0Pg: { title: "Interview 02 — Ms LP Lim" },
-    CiJ0R9ZugeY: { title: "Interview 01 — Ms LP Lim" },
+    egNdbDDS_Ws: { title: "Interview 01 — A/Prof CK Seow", question: "Why does Glasgow Computing Science support an open-source yoga mobile app project?" },
+    dyYVJnccUx0: { title: "Interview 02 — A/Prof CK Seow", question: "What value does this project bring to students and industry partners?" },
+    IsGAZrjEMp4: { title: "Interview 03 — Ms LP Lim", question: "How often should elderly and youth practice yoga for best results?" },
+    jV6KZ2no0Pg: { title: "Interview 02 — Ms LP Lim", question: "Is yoga safe for elderly people and beginners?" },
+    CiJ0R9ZugeY: { title: "Interview 01 — Ms LP Lim", question: "What are the key benefits of yoga for elderly and youth?" },
     mzqsdpvfDto: {
       title: "Sun Salutation Flow",
       description: "A dynamic sequence that links breath with movement, warming up the whole body while improving flexibility, mobility, and circulation.",
@@ -373,11 +373,11 @@ export const videoText: Record<Locale, Record<string, VideoText>> = {
     },
   },
   "zh-Hant": {
-    egNdbDDS_Ws: { title: "訪談 01 — A/Prof CK Seow" },
-    dyYVJnccUx0: { title: "訪談 02 — A/Prof CK Seow" },
-    IsGAZrjEMp4: { title: "訪談 03 — Ms LP Lim" },
-    jV6KZ2no0Pg: { title: "訪談 02 — Ms LP Lim" },
-    CiJ0R9ZugeY: { title: "訪談 01 — Ms LP Lim" },
+    egNdbDDS_Ws: { title: "訪談 01 — A/Prof CK Seow", question: "格拉斯哥大學計算機科學系為何支持這項開源瑜伽手機應用程式專案？" },
+    dyYVJnccUx0: { title: "訪談 02 — A/Prof CK Seow", question: "這項專案為學生與業界夥伴帶來什麼價值？" },
+    IsGAZrjEMp4: { title: "訪談 03 — Ms LP Lim", question: "長者與年輕人多久練習一次瑜伽效果最好？" },
+    jV6KZ2no0Pg: { title: "訪談 02 — Ms LP Lim", question: "瑜伽對長者與初學者是否安全？" },
+    CiJ0R9ZugeY: { title: "訪談 01 — Ms LP Lim", question: "瑜伽對長者與年輕人有哪些主要益處？" },
     mzqsdpvfDto: {
       title: "拜日式流",
       description: "一套結合呼吸與動作的連貫序列，能喚醒全身、提升柔軟度、關節活動度與血液循環。",
@@ -468,11 +468,11 @@ export const videoText: Record<Locale, Record<string, VideoText>> = {
     },
   },
   "zh-Hans": {
-    egNdbDDS_Ws: { title: "访谈 01 — A/Prof CK Seow" },
-    dyYVJnccUx0: { title: "访谈 02 — A/Prof CK Seow" },
-    IsGAZrjEMp4: { title: "访谈 03 — Ms LP Lim" },
-    jV6KZ2no0Pg: { title: "访谈 02 — Ms LP Lim" },
-    CiJ0R9ZugeY: { title: "访谈 01 — Ms LP Lim" },
+    egNdbDDS_Ws: { title: "访谈 01 — A/Prof CK Seow", question: "格拉斯哥大学计算机科学系为何支持这项开源瑜伽手机应用程序项目？" },
+    dyYVJnccUx0: { title: "访谈 02 — A/Prof CK Seow", question: "这项项目为学生与业界伙伴带来什么价值？" },
+    IsGAZrjEMp4: { title: "访谈 03 — Ms LP Lim", question: "长者与年轻人多久练习一次瑜伽效果最好？" },
+    jV6KZ2no0Pg: { title: "访谈 02 — Ms LP Lim", question: "瑜伽对长者与初学者是否安全？" },
+    CiJ0R9ZugeY: { title: "访谈 01 — Ms LP Lim", question: "瑜伽对长者与年轻人有哪些主要益处？" },
     mzqsdpvfDto: {
       title: "拜日式流",
       description: "一套结合呼吸与动作的连贯序列，能唤醒全身、提升柔软度、关节活动度与血液循环。",

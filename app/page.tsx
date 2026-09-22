@@ -16,9 +16,9 @@ type Video = {
 const videos: Video[] = [
   { id: "egNdbDDS_Ws", title: "Interview 01 — A/Prof CK Seow", duration: "0:39", category: "Interview" },
   { id: "dyYVJnccUx0", title: "Interview 02 — A/Prof CK Seow", duration: "0:38", category: "Interview" },
-  { id: "IsGAZrjEMp4", title: "Interview 03 — Ms LP Lim", duration: "0:48", category: "Interview" },
-  { id: "jV6KZ2no0Pg", title: "Interview 02 — Ms LP Lim", duration: "0:42", category: "Interview" },
   { id: "CiJ0R9ZugeY", title: "Interview 01 — Ms LP Lim", duration: "0:50", category: "Interview" },
+  { id: "jV6KZ2no0Pg", title: "Interview 02 — Ms LP Lim", duration: "0:42", category: "Interview" },
+  { id: "IsGAZrjEMp4", title: "Interview 03 — Ms LP Lim", duration: "0:48", category: "Interview" },
   {
     id: "mzqsdpvfDto",
     title: "Sun Salutation Flow",
@@ -206,6 +206,7 @@ function localizedVideo(video: Video, locale: Locale) {
   return {
     title: text?.title ?? video.title,
     description: text?.description ?? video.description,
+    question: text?.question,
   };
 }
 
@@ -415,13 +416,25 @@ export default function Home() {
           <div className="interview-layout">
             <div>
               <VideoPlayer video={selectedInterview} locale={locale} />
-              <div className="interview-now"><span>{t.nowPlaying}</span><h2>{localizedVideo(selectedInterview, locale).title}</h2></div>
+              <div className="interview-now">
+                <span>{t.nowPlaying}</span>
+                <h2>{localizedVideo(selectedInterview, locale).title}</h2>
+                {localizedVideo(selectedInterview, locale).question && (
+                  <p className="interview-question">{localizedVideo(selectedInterview, locale).question}</p>
+                )}
+              </div>
             </div>
             <div className="interview-list">
               {interviewVideos.map((video, index) => (
                 <button key={video.id} className={selectedInterview.id === video.id ? "active" : ""} onClick={() => setSelectedInterview(video)}>
                   <span className="interview-number">0{index + 1}</span>
-                  <span><b>{localizedVideo(video, locale).title}</b><small>{video.duration} · {t.playInterview}</small></span>
+                  <span>
+                    <b>{localizedVideo(video, locale).title}</b>
+                    {localizedVideo(video, locale).question && (
+                      <em className="interview-question-list">{localizedVideo(video, locale).question}</em>
+                    )}
+                    <small>{video.duration} · {t.playInterview}</small>
+                  </span>
                   <span className="round-play" aria-hidden="true" />
                 </button>
               ))}
