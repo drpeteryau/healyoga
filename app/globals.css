@@ -154,13 +154,17 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .interview-layout { display: grid; grid-template-columns: 1.45fr .75fr; gap: 35px; }
 .interview-now { padding: 21px 4px; }
 .interview-now h2 { margin: 5px 0; font-size: 26px; }
+.interview-now .interview-question { margin: 0; color: #555; font-style: italic; font-size: 15px; }
 .interview-list { display: flex; flex-direction: column; gap: 10px; }
 .interview-list button { border: 1px solid var(--line); background: #fff; border-radius: 18px; padding: 19px; display: grid; grid-template-columns: 44px 1fr 42px; align-items: center; text-align: left; gap: 12px; cursor: pointer; }
 .interview-list button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 .interview-number { font: italic 21px Georgia, serif; color: var(--aqua-dark); }
-.interview-list b, .interview-list small { display: block; }
+.interview-list b, .interview-list small, .interview-list .interview-question-list { display: block; }
 .interview-list b { font-size: 15px; margin-bottom: 6px; }
+.interview-list .interview-question-list { font-style: italic; color: #888; margin-bottom: 6px; }
+.interview-list button.active .interview-question-list { color: #ddd; }
 .interview-list small { color: #888; }
+.interview-list button.active small { color: #ccc; }
 .round-play { width: 36px; height: 36px; border-radius: 50%; background: var(--aqua); color: var(--ink); display: grid; place-items: center; }
 .round-play::after { content: ""; width: 0; height: 0; margin-left: 3px; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--ink); }
 .written-interview { display: grid; grid-template-columns: .55fr 1.45fr; gap: 40px; margin-top: 70px; padding-top: 60px; border-top: 1px solid var(--line); }
