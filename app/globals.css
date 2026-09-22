@@ -153,6 +153,15 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 .interview-list b { font-size: 15px; margin-bottom: 6px; }
 .interview-list small { color: #888; }
 .round-play { width: 36px; height: 36px; border-radius: 50%; background: var(--aqua); color: var(--ink); display: grid; place-items: center; font-size: 11px; }
+.written-interview { display: grid; grid-template-columns: .55fr 1.45fr; gap: 40px; margin-top: 70px; padding-top: 60px; border-top: 1px solid var(--line); }
+.written-photo { margin: 0; }
+.written-photo img { width: 100%; max-width: 260px; border-radius: 22px; display: block; object-fit: cover; aspect-ratio: 1 / 1.06; }
+.written-photo figcaption { margin-top: 16px; }
+.written-photo b { display: block; font-size: 17px; }
+.written-photo small { color: var(--muted); line-height: 1.5; }
+.written-copy h2 { font-size: clamp(28px, 3vw, 38px); letter-spacing: -1px; margin: 6px 0 22px; }
+.written-copy h3 { font-size: 18px; margin: 28px 0 4px; }
+.written-copy p { color: var(--muted); line-height: 1.7; margin: 0 0 14px; }
 .credits-hero { padding: 15px 0 70px; display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; }
 .credits-hero .eyebrow { grid-column: 1/-1; }
 .credits-hero h1 { font-size: clamp(52px, 6vw, 85px); margin: 0; }
@@ -181,11 +190,12 @@ h1 em { font: italic 400 1em/1 Georgia, serif; color: var(--aqua-dark); }
 footer { max-width: 1440px; margin: auto; min-height: 130px; padding: 35px 5vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: #777; font-size: 12px; }
 
 @media (max-width: 900px) {
-  .hero, .page-intro, .credits-hero, .credits-grid, .interview-layout { grid-template-columns: 1fr; }
+  .hero, .page-intro, .credits-hero, .credits-grid, .interview-layout, .written-interview { grid-template-columns: 1fr; }
   .hero { padding-top: 55px; }
   .page-intro p, .credits-hero p { margin-top: 20px; }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .credits-hero { gap: 10px; }
+  .written-photo img { max-width: 180px; }
 }
 
 @media (max-width: 620px) {
