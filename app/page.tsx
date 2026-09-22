@@ -275,6 +275,21 @@ function LanguageSwitcher({ locale, onChange }: { locale: Locale; onChange: (l: 
   );
 }
 
+function LanguageSwitcherCompact({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
+  return (
+    <select
+      className="lang-switcher-compact"
+      aria-label={ui[locale].languageLabel}
+      value={locale}
+      onChange={(e) => onChange(e.target.value as Locale)}
+    >
+      {locales.map((l) => (
+        <option key={l} value={l}>{localeNames[l]}</option>
+      ))}
+    </select>
+  );
+}
+
 export default function Home() {
   const [page, setPage] = useState<"practice" | "interviews" | "credits" | "terms">("practice");
   const [selectedPractice, setSelectedPractice] = useState(practiceVideos[0]);
@@ -333,6 +348,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
+        <LanguageSwitcherCompact locale={locale} onChange={setLocale} />
         <button className="brand" onClick={() => navigate("practice")} aria-label={t.brandHome}>
           <span className="brand-mark">H</span>
           <span><b>Heal</b><strong>Yoga</strong></span>
