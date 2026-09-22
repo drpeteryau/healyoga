@@ -457,13 +457,27 @@ export default function Home() {
               </div>
             </article>
             <div className="credit-stack">
-              <article><span>{t.facultyAdvisorLabel}</span><h3>{t.facultyAdvisorName}</h3></article>
-              <article><span>{t.supportedByLabel}</span><h3>{t.supportedBy1}</h3><p>{t.supportedBy2}<br />{t.supportedBy3}</p></article>
+              <article>
+                <span>{t.facultyAdvisorLabel}</span>
+                <h3>{t.facultyAdvisorName}</h3>
+                <a href="https://github.com/drpeteryau/" target="_blank" rel="noreferrer">{t.facultyAdvisorGithub}</a>
+              </article>
+              <article>
+                <span>{t.supportedByLabel}</span>
+                <h3>{t.supportedByUniversity}</h3>
+                <p className="schools">{t.supportedBySchool1}<br />{t.supportedBySchool2}</p>
+                <h3>{t.supportedByInstitute}</h3>
+              </article>
             </div>
           </div>
           <aside className="thanks">
-            <span className="quote-mark">“</span>
-            <div><span className="eyebrow">{t.specialThanksLabel}</span><h2>{t.specialThanksName}</h2><p>{t.specialThanksBody}</p></div>
+            <img className="thanks-photo" src="/lim-li-peng.jpg" alt="Ms Lim Li Peng" loading="lazy" />
+            <div>
+              <span className="eyebrow">{t.specialThanksLabel}</span>
+              <h2>{t.specialThanksName}</h2>
+              <p>{t.specialThanksBody}</p>
+              <a href="https://yoga8288.com/" target="_blank" rel="noreferrer">{t.specialThanksLink}</a>
+            </div>
           </aside>
           <div className="open-source">
             <div><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
