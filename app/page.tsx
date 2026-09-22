@@ -276,6 +276,50 @@ function LanguageSwitcher({ locale, onChange }: { locale: Locale; onChange: (l: 
   );
 }
 
+const DISCLAIMER_SESSION_KEY = "healyoga-disclaimer-ack";
+
+function DisclaimerModal({ locale, onAgree }: { locale: Locale; onAgree: () => void }) {
+  const t = ui[locale];
+  const [remember, setRemember] = useState(false);
+
+  function handleAgree() {
+    if (remember) {
+      try {
+        window.sessionStorage.setItem(DISCLAIMER_SESSION_KEY, "1");
+      } catch {
+        // sessionStorage unavailable (e.g. private browsing) — modal will simply reappear next load
+      }
+    }
+    onAgree();
+  }
+
+  function handleDisagree() {
+    window.location.href = "https://www.google.com";
+  }
+
+  return (
+    <div className="disclaimer-overlay" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+      <div className="disclaimer-modal">
+        <h2 id="disclaimer-title">{t.disclaimerTitle}</h2>
+        <ul>
+          <li>{t.disclaimerPoint1}</li>
+          <li>{t.disclaimerPoint2}</li>
+          <li>{t.disclaimerPoint3}</li>
+          <li>{t.disclaimerPoint4}</li>
+        </ul>
+        <label className="disclaimer-remember">
+          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+          {t.disclaimerRemember}
+        </label>
+        <div className="disclaimer-actions">
+          <button className="disclaimer-disagree" onClick={handleDisagree}>{t.disclaimerDisagree}</button>
+          <button className="disclaimer-agree" onClick={handleAgree}>{t.disclaimerAgree}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function LanguageSwitcherCompact({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
   return (
     <select
@@ -298,6 +342,18 @@ export default function Home() {
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
   const [query, setQuery] = useState("");
   const [locale, setLocale] = useState<Locale>("en");
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+
+  useEffect(() => {
+    let acknowledged = false;
+    try {
+      acknowledged = window.sessionStorage.getItem(DISCLAIMER_SESSION_KEY) === "1";
+    } catch {
+      // sessionStorage unavailable — fall back to showing the disclaimer
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time disclaimer hydration from sessionStorage, not an external subscription
+    if (!acknowledged) setShowDisclaimer(true);
+  }, []);
 
   useEffect(() => {
     const syncHash = () => {
@@ -350,6 +406,7 @@ export default function Home() {
 
   return (
     <main>
+      {showDisclaimer && <DisclaimerModal locale={locale} onAgree={() => setShowDisclaimer(false)} />}
       <header className="site-header">
         <LanguageSwitcherCompact locale={locale} onChange={setLocale} />
         <button className="brand" onClick={() => navigate("practice")} aria-label={t.brandHome}>
