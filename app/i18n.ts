@@ -1,17 +1,21 @@
-export type Locale = "en" | "zh-Hant" | "zh-Hans";
+export type Locale = "en" | "zh-Hant" | "zh-Hans" | "ta" | "ms";
 
-export const locales: Locale[] = ["en", "zh-Hant", "zh-Hans"];
+export const locales: Locale[] = ["en", "zh-Hant", "zh-Hans", "ta", "ms"];
 
 export const localeLabels: Record<Locale, string> = {
   en: "EN",
   "zh-Hant": "繁體",
   "zh-Hans": "简体",
+  ta: "த",
+  ms: "MY",
 };
 
 export const localeNames: Record<Locale, string> = {
   en: "English",
   "zh-Hant": "繁體中文",
   "zh-Hans": "简体中文",
+  ta: "தமிழ்",
+  ms: "Bahasa Melayu",
 };
 
 type Category = "Advanced" | "Intermediate" | "Standing" | "Sitting" | "Interview";
@@ -113,7 +117,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     nowPlaying: "現正播放",
     playInterview: "播放訪談",
 
-    writtenPhotoName: "Kamala Devi 副教授",
+    writtenPhotoName: "A/Prof Kamala Devi",
     writtenPhotoAffiliation1: "醫學、牙科與護理學院",
     writtenPhotoAffiliation2: "格拉斯哥大學",
     writtenEyebrow: "她的第一手分享",
@@ -140,13 +144,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     devTeamKicker: "開發團隊",
     devTeamCourse: "專業軟體開發與團隊專案",
     facultyAdvisorLabel: "指導教師",
-    facultyAdvisorName: "Dr Peter CY Yau（丘俊宇博士）",
+    facultyAdvisorName: "Dr Peter CY Yau",
     supportedByLabel: "支持單位",
     supportedBy1: "電腦科學學院",
     supportedBy2: "暨醫學、牙科與護理學院",
     supportedBy3: "格拉斯哥大學",
     specialThanksLabel: "特別感謝",
-    specialThanksName: "林麗萍女士",
+    specialThanksName: "Ms Lim Li Peng",
     specialThanksBody: "專業瑜伽導師，Heal Yoga 中所有練習示範皆由她親自指導拍攝。",
     openByDesign: "開放，是我們的設計理念。",
     openByDesignBody: "為學習、身心健康與公眾利益而生。",
@@ -183,7 +187,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     nowPlaying: "正在播放",
     playInterview: "播放访谈",
 
-    writtenPhotoName: "Kamala Devi 副教授",
+    writtenPhotoName: "A/Prof Kamala Devi",
     writtenPhotoAffiliation1: "医学、牙科与护理学院",
     writtenPhotoAffiliation2: "格拉斯哥大学",
     writtenEyebrow: "她的第一手分享",
@@ -210,13 +214,13 @@ export const ui: Record<Locale, Record<string, string>> = {
     devTeamKicker: "开发团队",
     devTeamCourse: "专业软件开发与团队项目",
     facultyAdvisorLabel: "指导教师",
-    facultyAdvisorName: "Dr Peter CY Yau（丘俊宇博士）",
+    facultyAdvisorName: "Dr Peter CY Yau",
     supportedByLabel: "支持单位",
     supportedBy1: "计算机科学学院",
     supportedBy2: "暨医学、牙科与护理学院",
     supportedBy3: "格拉斯哥大学",
     specialThanksLabel: "特别感谢",
-    specialThanksName: "林丽萍女士",
+    specialThanksName: "Ms Lim Li Peng",
     specialThanksBody: "专业瑜伽导师，Heal Yoga 中所有练习示范均由她亲自指导拍摄。",
     openByDesign: "开放，是我们的设计理念。",
     openByDesignBody: "为学习、身心健康与公众利益而生。",
@@ -226,6 +230,146 @@ export const ui: Record<Locale, Record<string, string>> = {
     footerAttribution: "格拉斯哥大学 · 学术项目",
 
     languageLabel: "语言",
+  },
+  ms: {
+    navPractice: "Latihan",
+    navInterviews: "Temu Bual",
+    navCredits: "Kredit",
+    brandHome: "Laman utama Heal Yoga",
+
+    heroEyebrow: "Pergerakan untuk setiap tubuh",
+    heroTitleLine1: "Cari keseimbangan anda,",
+    heroTitleLine2: "satu posisi pada satu masa.",
+    heroBody: "Demonstrasi yoga yang mudah diikuti dan dipandu jurulatih, direka untuk pelajar, warga emas, dan semua orang yang baru memulakan perjalanan kesihatan mereka.",
+    heroCta: "Terokai 22 latihan",
+
+    libraryEyebrow: "Perpustakaan berpandu",
+    libraryTitle: "Pilih latihan anda",
+    searchPlaceholder: "Cari posisi",
+    searchAriaLabel: "Cari posisi yoga",
+    filtersAriaLabel: "Tapis mengikut jenis latihan",
+    emptyResults: "Tiada posisi yang sepadan dengan carian anda. Cuba kata kunci lain.",
+
+    interviewsEyebrow: "Perbualan tentang kesejahteraan",
+    interviewsTitleLine1: "Dengar daripada mereka",
+    interviewsTitleLine2: "yang berada di sebalik latihan ini.",
+    interviewsBody: "Pandangan ringkas daripada profesional klinikal dan yoga mengenai pergerakan mudah diikuti, penuaan sihat, dan pemikiran di sebalik Heal Yoga.",
+    nowPlaying: "Sedang dimainkan",
+    playInterview: "Main temu bual",
+
+    writtenPhotoName: "A/Prof Kamala Devi",
+    writtenPhotoAffiliation1: "Sekolah Perubatan, Pergigian & Kejururawatan",
+    writtenPhotoAffiliation2: "Universiti Glasgow",
+    writtenEyebrow: "Dalam kata-katanya sendiri",
+    writtenTitle: "Perspektif kejururawatan tentang Heal Yoga",
+    writtenP1: "Objektif pelancaran aplikasi ini adalah untuk membantu warga emas membina asas dalam latihan yoga; membantu mereka menjadikan latihan sebagai kebiasaan; membantu mereka mengukuhkan tubuh, menenangkan fikiran dan berasa gembira melalui latihan yang berterusan.",
+    writtenP2: "Terdapat pelbagai posisi yoga. Aplikasi ini memaparkan beberapa posisi yang terkenal dan mudah diikuti untuk warga emas, kerana adalah penting bagi warga emas mempelajari posisi yang berguna sambil memastikan posisi tersebut tidak terlalu sukar diikuti.",
+    writtenP3: "Istilah “warga emas” digunakan secara longgar di sini: ia boleh bermaksud pesara; mereka yang telah mencapai umur persaraan tetapi masih bekerja; mereka yang belum mencapai umur persaraan tetapi memilih untuk berhenti bekerja lebih awal; atau golongan pekerja yang merasakan mereka kekurangan stamina untuk bersenam tetapi ingin mencuba yoga.",
+    writtenP4: "Aplikasi ini mengandungi posisi yoga kerusi untuk pemula, serta posisi peringkat pertengahan dan lanjutan di atas tikar. Oleh kerana aplikasi ini disasarkan kepada warga emas yang berlatih sendiri tanpa bimbingan, posisi yang dipilih dikekalkan mudah dan senang diikuti. Urutan direka supaya warga emas dapat melakukan pemanasan, latihan posisi dan penyejukan badan. Posisi ini bertujuan menyediakan regangan, penguatan otot, latihan kardio, keseimbangan dan latihan pernafasan, serta merangkumi satah sagital, frontal dan transversal supaya latihan meliputi semua arah pergerakan dengan menyeluruh.",
+    writtenP5: "Peringatan penting untuk warga emas yang menggunakan aplikasi ini ialah bernafas secara dalam dan tenang semasa berlatih, yang merupakan intipati yoga. Latihan yoga yang berterusan membantu mengukuhkan tubuh, memperbaiki postur, menenangkan fikiran, meningkatkan tumpuan, meningkatkan daya tahan dan menggalakkan kehidupan yang positif.",
+    writtenContentHeading: "Kandungan",
+    writtenContentChairLabel: "Yoga kerusi (peringkat pemula)",
+    writtenContentChairBody: " — Berlatih dengan kerusi membantu warga emas beralih dengan lebih mudah ke posisi yang mereka rasa mencabar dan kekal lebih lama dalam posisi tersebut untuk mendapat manfaatnya. Yoga kerusi amat disyorkan apabila latihan di atas lantai tidak dapat diakses atau tidak praktikal.",
+    writtenContentSunLabel: "Sun Salutation (peringkat pertengahan dan lanjutan)",
+    writtenContentSunBody: " — Satu urutan pergerakan penting dalam asana yoga yang menggalakkan kesihatan tulang belakang, pembukaan bahu dan dada, serta kekuatan anggota badan dan teras. Ia boleh digunakan sebagai pemanasan setelah warga emas mahir dengan posisi tersebut; peringkat pertengahan menumpukan kepada posisi berasingan manakala peringkat lanjutan menumpukan kepada urutan pergerakan dan latihan kardio.",
+    writtenFeaturesHeading: "Ciri-ciri aplikasi",
+    writtenFeaturesBody: "Untuk menggalakkan latihan yang berterusan dan kerap, aplikasi ini membantu warga emas menjejaki kemajuan mereka dengan memaparkan jumlah tempoh latihan mingguan mereka. Setelah mencapai satu pencapaian, mereka akan menerima trofi. Kami juga menjejaki perasaan warga emas dengan mengemukakan beberapa soalan selepas sebulan berlatih, bagi meningkatkan kesedaran tubuh mereka.",
+    writtenNursingHeading: "Pandangan dari sudut kejururawatan",
+    writtenNursingBody: "Latihan yoga yang berterusan menawarkan pelbagai manfaat kesihatan yang amat relevan untuk warga emas. Dari segi fisiologi, yoga meningkatkan kekuatan otot-rangka, mobiliti sendi dan keseimbangan, sekali gus mengurangkan risiko jatuh, satu kebimbangan utama dalam penjagaan geriatrik. Pernafasan terkawal dan pergerakan yang penuh kesedaran meningkatkan daya tahan kardiopulmonari dan membantu pengurusan yang lebih baik terhadap keadaan kronik seperti tekanan darah tinggi, diabetes dan artritis. Dari segi psikologi, yoga menggalakkan relaksasi, mengurangkan kebimbangan, dan meningkatkan daya tahan emosi, yang penting untuk mengekalkan kesejahteraan mental pada usia lanjut. Yang lebih penting, yoga menggalakkan keyakinan diri dan penyertaan aktif dalam penjagaan kesihatan, selaras dengan matlamat kejururawatan untuk memperkasakan individu mengawal kesihatan mereka sendiri dan menggalakkan penjagaan holistik yang berpusatkan insan.",
+
+    creditsEyebrow: "Kerjasama universiti",
+    creditsTitleLine1: "Dibina dengan teliti.",
+    creditsTitleLine2: "Dikongsi dengan tujuan.",
+    creditsBody: "Heal Yoga ialah inisiatif pendidikan tinggi yang menggunakan teknologi mudah alih sumber terbuka untuk menjadikan latihan yoga dan kesedaran kesihatan awam lebih mudah diakses oleh golongan muda dan warga emas.",
+    devTeamKicker: "Pasukan pembangunan",
+    devTeamCourse: "Pembangunan Perisian Profesional & Projek Berpasukan",
+    facultyAdvisorLabel: "Penasihat fakulti",
+    facultyAdvisorName: "Dr Peter CY Yau",
+    supportedByLabel: "Disokong oleh",
+    supportedBy1: "Sekolah Sains Komputer",
+    supportedBy2: "& Sekolah Perubatan, Pergigian & Kejururawatan",
+    supportedBy3: "Universiti Glasgow",
+    specialThanksLabel: "Penghargaan khas",
+    specialThanksName: "Ms Lim Li Peng",
+    specialThanksBody: "Jurulatih yoga profesional yang mengetuai demonstrasi yang dipaparkan sepanjang Heal Yoga.",
+    openByDesign: "Terbuka mengikut reka bentuk.",
+    openByDesignBody: "Dicipta untuk pembelajaran, kesejahteraan, dan manfaat awam.",
+    viewOnGithub: "Lihat projek ini di GitHub ↗",
+
+    footerTagline: "Bergerak dengan lembut. Bernafas dengan bebas. Berlatih dengan selamat.",
+    footerAttribution: "Universiti Glasgow · Projek Akademik",
+
+    languageLabel: "Bahasa",
+  },
+  ta: {
+    navPractice: "பயிற்சி",
+    navInterviews: "நேர்காணல்கள்",
+    navCredits: "பங்களிப்பாளர்கள்",
+    brandHome: "Heal Yoga முகப்புக்குச் செல்ல",
+
+    heroEyebrow: "ஒவ்வொரு உடலுக்கும் ஏற்ற இயக்கம்",
+    heroTitleLine1: "உங்கள் சமநிலையைக் கண்டறியுங்கள்,",
+    heroTitleLine2: "ஒரு தோரணையில் இருந்து மற்றொன்றுக்கு.",
+    heroBody: "மாணவர்கள், முதியோர், மற்றும் நலவாழ்வுப் பயணத்தைத் தொடங்கும் அனைவருக்காகவும் வடிவமைக்கப்பட்ட, பயிற்சியாளர் வழிகாட்டும் எளிய யோகா நிரூபணங்கள்.",
+    heroCta: "22 பயிற்சிகளை ஆராயுங்கள்",
+
+    libraryEyebrow: "வழிகாட்டப்பட்ட நூலகம்",
+    libraryTitle: "உங்கள் பயிற்சியைத் தேர்ந்தெடுங்கள்",
+    searchPlaceholder: "தோரணைகளைத் தேடுங்கள்",
+    searchAriaLabel: "யோகா தோரணைகளைத் தேடுங்கள்",
+    filtersAriaLabel: "பயிற்சி வகையின்படி வடிகட்டுங்கள்",
+    emptyResults: "உங்கள் தேடலுக்குப் பொருந்தும் தோரணைகள் இல்லை. வேறு சொல்லை முயற்சிக்கவும்.",
+
+    interviewsEyebrow: "நலவாழ்வு குறித்த உரையாடல்கள்",
+    interviewsTitleLine1: "பயிற்சிக்குப் பின்னால் உள்ளவர்களின்",
+    interviewsTitleLine2: "கருத்துகளைக் கேளுங்கள்.",
+    interviewsBody: "அணுகக்கூடிய இயக்கம், ஆரோக்கியமான முதுமை, மற்றும் Heal Yoga-வுக்குப் பின்னணியிலுள்ள சிந்தனை குறித்து மருத்துவ மற்றும் யோகா நிபுணர்களின் சுருக்கமான கருத்துகள்.",
+    nowPlaying: "இப்போது ஒளிபரப்பப்படுகிறது",
+    playInterview: "நேர்காணலை இயக்கு",
+
+    writtenPhotoName: "A/Prof Kamala Devi",
+    writtenPhotoAffiliation1: "மருத்துவம், பல் மருத்துவம் மற்றும் நர்சிங் பள்ளி",
+    writtenPhotoAffiliation2: "கிளாஸ்கோ பல்கலைக்கழகம்",
+    writtenEyebrow: "அவரது சொந்த வார்த்தைகளில்",
+    writtenTitle: "Heal Yoga குறித்த ஒரு நர்சிங் பார்வை",
+    writtenP1: "இந்த செயலியைத் தொடங்குவதன் நோக்கங்கள், முதியோர் யோகா பயிற்சியில் ஒரு அடித்தளத்தை உருவாக்க உதவுவது; அவர்களது பயிற்சியை ஒரு பழக்கமாக மாற்ற உதவுவது; தொடர்ச்சியான பயிற்சியின் மூலம் அவர்களது உடலை வலுப்படுத்தவும், மனதை அமைதிப்படுத்தவும், மகிழ்ச்சியை உணரவும் உதவுவது ஆகும்.",
+    writtenP2: "யோகா தோரணைகள் ஏராளம் உள்ளன. முதியோருக்குப் பயனுள்ள தோரணைகளைக் கற்றுக்கொள்வது மிக முக்கியம் என்பதால், அவற்றை மிகவும் கடினமாக இல்லாமல் பின்பற்றக்கூடியதாக வைத்திருக்கும் வகையில், நன்கு அறியப்பட்ட மற்றும் எளிதில் அணுகக்கூடிய சில தோரணைகளை இந்த செயலி சிறப்பித்துக் காட்டுகிறது.",
+    writtenP3: "இங்கு “முதியோர்” என்ற சொல் தளர்வாகப் பயன்படுத்தப்படுகிறது: இது ஓய்வூதியம் பெற்றவர்களையும்; ஓய்வு வயதை எட்டியும் இன்னும் வேலை செய்பவர்களையும்; ஓய்வு வயதை எட்டாமலேயே பணியிலிருந்து விலக விரும்புபவர்களையும்; அல்லது உடற்பயிற்சி செய்ய தமக்குப் போதிய சக்தி இல்லை எனக் கருதி, ஆனால் யோகாவை முயற்சிக்க விரும்பும் பணிபுரியும் பெரியவர்களையும் குறிக்கலாம்.",
+    writtenP4: "இந்த செயலியில் ஆரம்பநிலையாளர்களுக்கான நாற்காலி யோகா தோரணைகளும், பாயின் மீது செய்யப்படும் இடைநிலை மற்றும் மேம்பட்ட நிலை தோரணைகளும் உள்ளன. வழிகாட்டுதல் இன்றி தாமே பயிற்சி செய்யும் முதியோருக்காக இந்த செயலி வடிவமைக்கப்பட்டிருப்பதால், தோரணைகள் எளிமையாகவும் அணுகக்கூடியதாகவும் வைக்கப்பட்டுள்ளன. முதியோர் உடல் சூடேற்றம், தோரணைப் பயிற்சி, மற்றும் உடலை அமைதிப்படுத்தும் முறையில் வரிசை வடிவமைக்கப்பட்டுள்ளது. இந்த தோரணைகள் நீட்சி, தசை வலுப்படுத்துதல், இதய-நுரையீரல் பயிற்சி, சமநிலை மற்றும் மூச்சுப் பயிற்சி ஆகியவற்றை வழங்கும் நோக்கத்துடன், sagittal, frontal மற்றும் transverse எனும் மூன்று இயக்கத் தளங்களையும் உள்ளடக்கி, பயிற்சி அனைத்துத் திசைகளிலும் முழுமையாக இருக்குமாறு வடிவமைக்கப்பட்டுள்ளன.",
+    writtenP5: "இந்த செயலியைப் பயன்படுத்தும் முதியோருக்கான ஒரு முக்கியமான நினைவூட்டல், பயிற்சியின் போது ஆழமாகவும் அமைதியாகவும் மூச்சு விடுவதே ஆகும், இதுவே யோகாவின் சாரம். தொடர்ச்சியான யோகா பயிற்சி உடலை வலுப்படுத்தவும், தோற்றத்தை சீரமைக்கவும், மனதை அமைதிப்படுத்தவும், கவனத்தை மேம்படுத்தவும், சகிப்புத்தன்மையை அதிகரிக்கவும், நேர்மறையான வாழ்க்கையை ஊக்குவிக்கவும் உதவுகிறது.",
+    writtenContentHeading: "உள்ளடக்கம்",
+    writtenContentChairLabel: "நாற்காலி யோகா (ஆரம்ப நிலை)",
+    writtenContentChairBody: " — நாற்காலியுடன் பயிற்சி செய்வது, முதியோர் தமக்குச் சவாலாக இருக்கும் தோரணைகளுக்குள் எளிதாக நுழையவும், அதன் பலனைப் பெற தோரணையில் நீண்ட நேரம் தங்கவும் உதவுகிறது. தரையில் பயிற்சி செய்ய இயலாத அல்லது நடைமுறைக்குப் பொருந்தாத சூழலில் நாற்காலி யோகா மிகவும் பரிந்துரைக்கப்படுகிறது.",
+    writtenContentSunLabel: "சூரிய நமஸ்காரம் (இடைநிலை மற்றும் மேம்பட்ட நிலை)",
+    writtenContentSunBody: " — முதுகெலும்பு ஆரோக்கியத்தை, தோள்பட்டை மற்றும் மார்பு விரிவாக்கத்தை, மற்றும் கை கால் மற்றும் மைய பலத்தை ஊக்குவிக்கும் யோகா ஆசனங்களின் முக்கியமான ஓட்ட வரிசை இதுவாகும். முதியோர் தோரணைகளுடன் பழக்கமான பின்னர் இதனை உடல் சூடேற்றமாகப் பயன்படுத்தலாம்; இடைநிலை நிலை தனித்தனி தோரணைகளில் கவனம் செலுத்துகிறது, மேம்பட்ட நிலை ஓட்ட வரிசை மற்றும் இதய பயிற்சியில் கவனம் செலுத்துகிறது.",
+    writtenFeaturesHeading: "செயலியின் அம்சங்கள்",
+    writtenFeaturesBody: "தொடர்ச்சியான, அடிக்கடி நடைபெறும் பயிற்சியை ஊக்குவிக்க, முதியோரது வாராந்திர மொத்த பயிற்சி காலத்தைக் காட்டி, அவர்களது முன்னேற்றத்தைக் கண்காணிக்க இந்த செயலி உதவுகிறது. ஒரு மைல்கல் எட்டப்படும்போது, அவர்களுக்கு ஒரு கோப்பை வழங்கப்படுகிறது. ஒரு மாத பயிற்சிக்குப் பின், முதியோரின் உடல் விழிப்புணர்வை அதிகரிக்க, சில கேள்விகளைக் கேட்பதன் மூலம் அவர்கள் எவ்வாறு உணர்கிறார்கள் என்பதையும் நாங்கள் கண்காணிக்கிறோம்.",
+    writtenNursingHeading: "நர்சிங் பார்வையில்",
+    writtenNursingBody: "தொடர்ச்சியான யோகா பயிற்சி, குறிப்பாக முதியோருக்குப் பொருந்தக்கூடிய பன்முக ஆரோக்கிய நன்மைகளை வழங்குகிறது. உடலியல் அடிப்படையில், யோகா தசை-எலும்பு வலிமையையும், மூட்டு இயக்கத்தையும், சமநிலையையும் மேம்படுத்துகிறது, இதனால் முதியோர் பராமரிப்பில் முக்கிய கவலையாக இருக்கும் விழும் அபாயத்தைக் குறைக்கிறது. கட்டுப்படுத்தப்பட்ட மூச்சு மற்றும் கவனத்துடன் கூடிய இயக்கம் இதய-நுரையீரல் சகிப்புத்தன்மையை மேம்படுத்தி, உயர் இரத்த அழுத்தம், நீரிழிவு, மூட்டுவாதம் போன்ற நீண்டகால நோய்களை சிறப்பாக நிர்வகிக்க உதவுகிறது. உளவியல் அடிப்படையில், யோகா தளர்வை ஊக்குவித்து, பதற்றத்தைக் குறைத்து, உணர்ச்சி நெகிழ்ச்சித்தன்மையை மேம்படுத்துகிறது, இது முதுமையில் மனநலத்தை பேணுவதற்கு இன்றியமையாதது. மேலும் முக்கியமாக, யோகா தன்னம்பிக்கையை ஊக்குவித்து, ஆரோக்கிய பராமரிப்பில் தீவிர பங்களிப்பை ஊக்குவிக்கிறது, இது தனிநபர்கள் தமது சொந்த ஆரோக்கியத்தைக் கட்டுப்படுத்த அதிகாரம் அளிக்கும் மற்றும் முழுமையான, மனிதநேய மைய பராமரிப்பை ஊக்குவிக்கும் நர்சிங் இலக்குகளுடன் ஒத்துப்போகிறது.",
+
+    creditsEyebrow: "ஒரு பல்கலைக்கழக கூட்டிணைவு",
+    creditsTitleLine1: "அக்கறையுடன் உருவாக்கப்பட்டது.",
+    creditsTitleLine2: "நோக்கத்துடன் பகிரப்பட்டது.",
+    creditsBody: "Heal Yoga என்பது திறந்த மூல மொபைல் தொழில்நுட்பத்தைப் பயன்படுத்தி, யோகா பயிற்சியையும் பொது சுகாதார விழிப்புணர்வையும் இளையோருக்கும் முதியோருக்கும் மேலும் அணுகக்கூடியதாக்கும் ஒரு உயர்கல்வித் திட்டமாகும்.",
+    devTeamKicker: "மேம்பாட்டுக் குழு",
+    devTeamCourse: "தொழில்முறை மென்பொருள் மேம்பாடு & குழு திட்டம்",
+    facultyAdvisorLabel: "பீடம் ஆலோசகர்",
+    facultyAdvisorName: "Dr Peter CY Yau",
+    supportedByLabel: "ஆதரவளிப்பவர்",
+    supportedBy1: "கணினியியல் பள்ளி",
+    supportedBy2: "& மருத்துவம், பல் மருத்துவம் மற்றும் நர்சிங் பள்ளி",
+    supportedBy3: "கிளாஸ்கோ பல்கலைக்கழகம்",
+    specialThanksLabel: "சிறப்பு நன்றி",
+    specialThanksName: "Ms Lim Li Peng",
+    specialThanksBody: "Heal Yoga முழுவதும் இடம்பெறும் நிரூபணங்களை வழிநடத்தும் தொழில்முறை யோகா பயிற்சியாளர்.",
+    openByDesign: "திறந்த தன்மையே எங்கள் வடிவமைப்பு நோக்கம்.",
+    openByDesignBody: "கற்றல், நலவாழ்வு, மற்றும் பொது நலனுக்காக உருவாக்கப்பட்டது.",
+    viewOnGithub: "GitHub-இல் இத்திட்டத்தைப் பார்க்க ↗",
+
+    footerTagline: "மென்மையாக இயங்குங்கள். சுதந்திரமாக மூச்சு விடுங்கள். பாதுகாப்பாக பயிற்சி செய்யுங்கள்.",
+    footerAttribution: "கிளாஸ்கோ பல்கலைக்கழகம் · கல்விசார் திட்டம்",
+
+    languageLabel: "மொழி",
   },
 };
 
@@ -253,6 +397,22 @@ export const categoryLabels: Record<Locale, Record<Category | "All", string>> = 
     Standing: "站姿",
     Sitting: "坐姿",
     Interview: "访谈",
+  },
+  ms: {
+    All: "Semua",
+    Advanced: "Lanjutan",
+    Intermediate: "Pertengahan",
+    Standing: "Berdiri",
+    Sitting: "Duduk",
+    Interview: "Temu Bual",
+  },
+  ta: {
+    All: "அனைத்தும்",
+    Advanced: "மேம்பட்ட நிலை",
+    Intermediate: "இடைநிலை",
+    Standing: "நின்று செய்யும்",
+    Sitting: "அமர்ந்து செய்யும்",
+    Interview: "நேர்காணல்",
   },
 };
 
@@ -355,11 +515,11 @@ export const videoText: Record<Locale, Record<string, VideoText>> = {
     },
   },
   "zh-Hant": {
-    egNdbDDS_Ws: { title: "訪談 01 — 蕭客歡副教授" },
-    dyYVJnccUx0: { title: "訪談 02 — 蕭客歡副教授" },
-    IsGAZrjEMp4: { title: "訪談 03 — 林麗萍女士" },
-    jV6KZ2no0Pg: { title: "訪談 02 — 林麗萍女士" },
-    CiJ0R9ZugeY: { title: "訪談 01 — 林麗萍女士" },
+    egNdbDDS_Ws: { title: "訪談 01 — A/Prof CK Seow" },
+    dyYVJnccUx0: { title: "訪談 02 — A/Prof CK Seow" },
+    IsGAZrjEMp4: { title: "訪談 03 — Ms LP Lim" },
+    jV6KZ2no0Pg: { title: "訪談 02 — Ms LP Lim" },
+    CiJ0R9ZugeY: { title: "訪談 01 — Ms LP Lim" },
     mzqsdpvfDto: {
       title: "拜日式流",
       description: "一套結合呼吸與動作的連貫序列，能喚醒全身、提升柔軟度、關節活動度與血液循環。",
@@ -450,11 +610,11 @@ export const videoText: Record<Locale, Record<string, VideoText>> = {
     },
   },
   "zh-Hans": {
-    egNdbDDS_Ws: { title: "访谈 01 — 萧客欢副教授" },
-    dyYVJnccUx0: { title: "访谈 02 — 萧客欢副教授" },
-    IsGAZrjEMp4: { title: "访谈 03 — 林丽萍女士" },
-    jV6KZ2no0Pg: { title: "访谈 02 — 林丽萍女士" },
-    CiJ0R9ZugeY: { title: "访谈 01 — 林丽萍女士" },
+    egNdbDDS_Ws: { title: "访谈 01 — A/Prof CK Seow" },
+    dyYVJnccUx0: { title: "访谈 02 — A/Prof CK Seow" },
+    IsGAZrjEMp4: { title: "访谈 03 — Ms LP Lim" },
+    jV6KZ2no0Pg: { title: "访谈 02 — Ms LP Lim" },
+    CiJ0R9ZugeY: { title: "访谈 01 — Ms LP Lim" },
     mzqsdpvfDto: {
       title: "拜日式流",
       description: "一套结合呼吸与动作的连贯序列，能唤醒全身、提升柔软度、关节活动度与血液循环。",
@@ -542,6 +702,196 @@ export const videoText: Record<Locale, Record<string, VideoText>> = {
     ZhelQy85j3M: {
       title: "头颈肩伸展",
       description: "温和的活动序列，能释放颈部、肩膀与上背部的紧绷感，同时改善舒适的活动范围。",
+    },
+  },
+  ms: {
+    egNdbDDS_Ws: { title: "Temu Bual 01 — A/Prof CK Seow" },
+    dyYVJnccUx0: { title: "Temu Bual 02 — A/Prof CK Seow" },
+    IsGAZrjEMp4: { title: "Temu Bual 03 — Ms LP Lim" },
+    jV6KZ2no0Pg: { title: "Temu Bual 02 — Ms LP Lim" },
+    CiJ0R9ZugeY: { title: "Temu Bual 01 — Ms LP Lim" },
+    mzqsdpvfDto: {
+      title: "Aliran Sun Salutation",
+      description: "Satu urutan dinamik yang menghubungkan pernafasan dengan pergerakan, memanaskan seluruh badan sambil meningkatkan kelenturan, mobiliti, dan peredaran darah.",
+    },
+    m0b_BebYNBQ: {
+      title: "Baby Cobra",
+      description: "Regangan belakang yang lembut yang membuka dada dan mengukuhkan belakang atas sambil menggalakkan mobiliti tulang belakang.",
+    },
+    hComtEvbgN4: {
+      title: "Posisi Lapan Titik",
+      description: "Posisi menurun terkawal di mana lapan titik badan menyentuh lantai, membantu mengukuhkan lengan, bahu, dada, dan teras.",
+    },
+    "Ma93Zxwp_-o": {
+      title: "Plank",
+      description: "Posisi kekuatan seluruh badan yang melibatkan teras, bahu, lengan, dan kaki sambil membina kestabilan dan kawalan badan.",
+    },
+    "0MUxqZmmmq8": {
+      title: "Downward Dog",
+      description: "Regangan seluruh badan yang memanjangkan tulang belakang, bahu, hamstring, dan betis sambil mengukuhkan bahagian atas badan.",
+    },
+    ze9cJVnkYOg: {
+      title: "Posisi Segitiga",
+      description: "Regangan berdiri yang membuka pinggul dan dada sambil memanjangkan sisi badan dan meningkatkan keseimbangan.",
+    },
+    "aP40k--wiPo": {
+      title: "Posisi Sudut Sisi",
+      description: "Regangan berdiri yang mendalam yang mengukuhkan kaki sambil membuka pinggul, dada, bahu, dan sisi badan.",
+    },
+    "1EmtCVdAKuI": {
+      title: "Reverse Warrior 2",
+      description: "Regangan sisi mengalir daripada Warrior 2 yang membuka rusuk dan pinggang sambil mengekalkan kekuatan dan kestabilan kaki.",
+    },
+    D8OEOqj6LKo: {
+      title: "Warrior 2",
+      description: "Posisi berdiri yang kukuh yang membina daya tahan kaki dan mobiliti pinggul sambil membuka dada dan meningkatkan keseimbangan.",
+    },
+    ETFrnz9CCsw: {
+      title: "Warrior 1",
+      description: "Posisi berdiri yang kukuh yang mengukuhkan kaki sambil meregangkan pinggul dan membuka dada dan bahu.",
+    },
+    vpECbuWGnVw: {
+      title: "Warrior 3",
+      description: "Keseimbangan satu kaki yang mencabar kestabilan sambil mengukuhkan kaki, teras, belakang, dan punggung.",
+    },
+    "zr-EsTGQE3g": {
+      title: "Standing Crunch",
+      description: "Pergerakan teras yang dilakukan sambil berdiri, menyatukan bahagian atas dan bawah badan, mengaktifkan otot abdomen sambil meningkatkan koordinasi dan keseimbangan.",
+    },
+    qJHd5KIO35I: {
+      title: "Regangan Belakang dan Dada",
+      description: "Regangan mobiliti yang membuka dada dan bahu sambil melegakan ketegangan pada belakang atas.",
+    },
+    Z_LIRhABH7c: {
+      title: "Posisi Goddess (Regangan Kaki)",
+      description: "Squat berdiri luas yang membuka pinggul dan bahagian dalam paha sambil mengukuhkan punggung, paha, dan kaki.",
+    },
+    r4ixF0BmzfI: {
+      title: "Posisi Goddess (Putaran Bahu dan Badan)",
+      description: "Posisi Goddess digabungkan dengan putaran bahagian atas badan untuk meregangkan bahu dan tulang belakang sambil mengekalkan kekuatan bahagian bawah badan.",
+    },
+    "78t9qqSWf4Q": {
+      title: "Angkatan Kaki (Lurus)",
+      description: "Angkatan kaki lurus yang terkawal yang mengukuhkan otot fleksor pinggul dan teras sambil membantu meningkatkan mobiliti bahagian bawah badan.",
+    },
+    "6tlBgzidSuU": {
+      title: "Angkatan Kaki (Bengkok)",
+      description: "Angkatan kaki dengan lutut bengkok yang mengaktifkan otot teras dan pinggul dengan julat pergerakan yang lebih terkawal dan mudah diikuti.",
+    },
+    "vkb-jrEq4sc": {
+      title: "Putaran Bahu dan Badan",
+      description: "Regangan putaran yang menggerakkan tulang belakang sambil melegakan ketegangan pada bahu, dada, dan belakang atas.",
+    },
+    "5jSzGqTOTeY": {
+      title: "Regangan Sisi Bahu",
+      description: "Regangan lengkung sisi yang memanjangkan bahu, belakang atas, pinggang, dan sisi badan.",
+    },
+    "-K7puFfQgIc": {
+      title: "Putaran Lengan Bengkok",
+      description: "Pergerakan mobiliti bahu menggunakan lengan bengkok untuk memutarkan sendi bahu dengan lembut dan melonggarkan bahagian atas badan.",
+    },
+    oCGcR5GgpWI: {
+      title: "Putaran Lengan Lurus",
+      description: "Putaran lengan terkawal yang bergerak melalui julat pergerakan bahu yang lebih luas untuk meningkatkan mobiliti dan memanaskan bahu.",
+    },
+    ZhelQy85j3M: {
+      title: "Regangan Kepala, Leher dan Bahu",
+      description: "Urutan mobiliti yang lembut direka untuk melegakan ketegangan di sekitar leher, bahu, dan belakang atas sambil meningkatkan julat pergerakan yang selesa.",
+    },
+  },
+  ta: {
+    egNdbDDS_Ws: { title: "நேர்காணல் 01 — A/Prof CK Seow" },
+    dyYVJnccUx0: { title: "நேர்காணல் 02 — A/Prof CK Seow" },
+    IsGAZrjEMp4: { title: "நேர்காணல் 03 — Ms LP Lim" },
+    jV6KZ2no0Pg: { title: "நேர்காணல் 02 — Ms LP Lim" },
+    CiJ0R9ZugeY: { title: "நேர்காணல் 01 — Ms LP Lim" },
+    mzqsdpvfDto: {
+      title: "சூரிய நமஸ்கார ஓட்டம்",
+      description: "மூச்சையும் இயக்கத்தையும் இணைக்கும் ஒரு ஆற்றல்மிக்க வரிசை, இது நெகிழ்வுத்தன்மை, மூட்டு இயக்கம், மற்றும் இரத்த ஓட்டத்தை மேம்படுத்தும் அதே வேளையில் உடல் முழுவதையும் சூடேற்றுகிறது.",
+    },
+    m0b_BebYNBQ: {
+      title: "பேபி கோப்ரா",
+      description: "மார்பைத் திறந்து, மேல் முதுகை வலுப்படுத்தும் ஒரு மென்மையான பின்வளைவு தோரணை, இது முதுகெலும்பு இயக்கத்தையும் ஊக்குவிக்கிறது.",
+    },
+    hComtEvbgN4: {
+      title: "எட்டு புள்ளி தோரணை",
+      description: "உடலின் எட்டு புள்ளிகள் தரையைத் தொடும் ஒரு கட்டுப்படுத்தப்பட்ட தாழ்வு நிலை, இது கைகள், தோள்பட்டைகள், மார்பு, மற்றும் மைய தசைகளை வலுப்படுத்த உதவுகிறது.",
+    },
+    "Ma93Zxwp_-o": {
+      title: "பிளாங்க்",
+      description: "மையம், தோள்பட்டைகள், கைகள், மற்றும் கால்களை ஈடுபடுத்தி, உறுதித்தன்மையையும் உடல் கட்டுப்பாட்டையும் உருவாக்கும் ஒரு முழு உடல் பலத் தோரணை.",
+    },
+    "0MUxqZmmmq8": {
+      title: "டவுன்வர்ட் டாக்",
+      description: "முதுகெலும்பு, தோள்பட்டைகள், தொடைப் பின்புறம், மற்றும் கெண்டைக்காலை நீட்டி, மேல் உடலை வலுப்படுத்தும் ஒரு முழு உடல் நீட்சி தோரணை.",
+    },
+    ze9cJVnkYOg: {
+      title: "முக்கோண தோரணை",
+      description: "இடுப்பையும் மார்பையும் திறந்து, உடலின் பக்கவாட்டை நீட்டி, சமநிலையை மேம்படுத்தும் ஒரு நின்று செய்யும் நீட்சி தோரணை.",
+    },
+    "aP40k--wiPo": {
+      title: "பக்க கோண தோரணை",
+      description: "கால்களை வலுப்படுத்தும் அதே வேளையில், இடுப்பு, மார்பு, தோள்பட்டைகள், மற்றும் உடலின் பக்கவாட்டைத் திறக்கும் ஒரு ஆழமான நின்று செய்யும் நீட்சி தோரணை.",
+    },
+    "1EmtCVdAKuI": {
+      title: "தலைகீழ் வாரியர் 2",
+      description: "வாரியர் 2-லிருந்து ஓடும் ஒரு பக்க நீட்சி, இது கால்களின் பலத்தையும் உறுதித்தன்மையையும் பேணி, விலா எலும்புகளையும் இடுப்பையும் திறக்கிறது.",
+    },
+    D8OEOqj6LKo: {
+      title: "வாரியர் 2",
+      description: "கால் சகிப்புத்தன்மையையும் இடுப்பு இயக்கத்தையும் வளர்க்கும் அதே வேளையில், மார்பைத் திறந்து சமநிலையை மேம்படுத்தும் ஒரு வலுவான நின்று செய்யும் தோரணை.",
+    },
+    ETFrnz9CCsw: {
+      title: "வாரியர் 1",
+      description: "கால்களை வலுப்படுத்தும் அதே வேளையில், இடுப்பை நீட்டி மார்பையும் தோள்பட்டைகளையும் திறக்கும் ஒரு ஆற்றல்மிக்க நின்று செய்யும் தோரணை.",
+    },
+    vpECbuWGnVw: {
+      title: "வாரியர் 3",
+      description: "கால்கள், மையம், முதுகு, மற்றும் இடுப்புத் தசைகளை வலுப்படுத்தும் அதே வேளையில், உறுதித்தன்மையைச் சவால் செய்யும் ஒற்றைக்கால் சமநிலை தோரணை.",
+    },
+    "zr-EsTGQE3g": {
+      title: "நின்று செய்யும் கிரஞ்ச்",
+      description: "மேல் மற்றும் கீழ் உடலை ஒன்றிணைத்து, ஒருங்கிணைப்பையும் சமநிலையையும் மேம்படுத்தும் அதே வேளையில், வயிற்றுத் தசைகளைச் செயல்படுத்தும் ஒரு நின்று செய்யும் மைய இயக்கம்.",
+    },
+    qJHd5KIO35I: {
+      title: "முதுகு மற்றும் மார்பு நீட்சி",
+      description: "மார்பையும் தோள்பட்டைகளையும் திறந்து, மேல் முதுகின் இறுக்கத்தை நீக்கும் ஒரு இயக்க நீட்சி தோரணை.",
+    },
+    Z_LIRhABH7c: {
+      title: "காடஸ் தோரணை (கால் நீட்சி)",
+      description: "புட்டம், தொடை, மற்றும் கால்களை வலுப்படுத்தும் அதே வேளையில், இடுப்பையும் தொடையின் உள்பகுதியையும் திறக்கும் ஒரு அகன்ற நிலை குந்து தோரணை.",
+    },
+    r4ixF0BmzfI: {
+      title: "காடஸ் தோரணை (தோள் மற்றும் உடல் திருப்பம்)",
+      description: "கீழ் உடலின் பலத்தைப் பேணும் அதே வேளையில், தோள்பட்டைகளையும் முதுகெலும்பையும் நீட்டும் வகையில், காடஸ் நிலையுடன் மேல் உடல் சுழற்சியை இணைக்கும் தோரணை.",
+    },
+    "78t9qqSWf4Q": {
+      title: "கால் தூக்கல் (நேரான)",
+      description: "இடுப்பு ஃபிளெக்சர் தசைகளையும் மையத்தையும் வலுப்படுத்தும் அதே வேளையில், கீழ் உடல் இயக்கத்தை மேம்படுத்த உதவும் ஒரு கட்டுப்படுத்தப்பட்ட நேரான கால் தூக்கல்.",
+    },
+    "6tlBgzidSuU": {
+      title: "கால் தூக்கல் (மடிந்த)",
+      description: "மையம் மற்றும் இடுப்புத் தசைகளைச் செயல்படுத்தும், மேலும் கட்டுப்படுத்தப்பட்ட மற்றும் எளிதாகப் பின்பற்றக்கூடிய இயக்க வீச்சைக் கொண்ட ஒரு மடிந்த முழங்கால் கால் தூக்கல்.",
+    },
+    "vkb-jrEq4sc": {
+      title: "தோள் மற்றும் உடல் திருப்பம்",
+      description: "தோள்பட்டைகள், மார்பு, மற்றும் மேல் முதுகின் இறுக்கத்தை நீக்கும் அதே வேளையில், முதுகெலும்பை இயக்கும் ஒரு சுழற்சி நீட்சி.",
+    },
+    "5jSzGqTOTeY": {
+      title: "தோள் பக்கவாட்டு நீட்சி",
+      description: "தோள்பட்டைகள், மேல் முதுகு, இடுப்பு, மற்றும் உடலின் பக்கவாட்டை நீட்டும் ஒரு பக்கவாட்டு வளைவு நீட்சி.",
+    },
+    "-K7puFfQgIc": {
+      title: "மடிந்த கை சுழற்சி",
+      description: "மடிந்த கைகளைப் பயன்படுத்தி தோள் மூட்டுகளை மென்மையாகச் சுழற்றி, மேல் உடலைத் தளர்த்தும் ஒரு தோள் இயக்க பயிற்சி.",
+    },
+    oCGcR5GgpWI: {
+      title: "நேரான கை சுழற்சி",
+      description: "தோள் இயக்கத்தை மேம்படுத்தவும் தோள்பட்டைகளைச் சூடேற்றவும், பரந்த தோள் இயக்க வீச்சின் வழியாகச் செயல்படும் ஒரு கட்டுப்படுத்தப்பட்ட கை சுழற்சி.",
+    },
+    ZhelQy85j3M: {
+      title: "தலை, கழுத்து மற்றும் தோள் நீட்சி",
+      description: "கழுத்து, தோள்பட்டைகள், மற்றும் மேல் முதுகைச் சுற்றியுள்ள இறுக்கத்தை நீக்கி, வசதியான இயக்க வீச்சை மேம்படுத்தும் வகையில் வடிவமைக்கப்பட்ட ஒரு மென்மையான இயக்க வரிசை.",
     },
   },
 };

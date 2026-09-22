@@ -299,6 +299,8 @@ export default function Home() {
       if (browser.startsWith("zh")) {
         return browser.includes("hans") || browser.includes("cn") || browser.includes("sg") ? "zh-Hans" : "zh-Hant";
       }
+      if (browser.startsWith("ta")) return "ta";
+      if (browser.startsWith("ms")) return "ms";
       return null;
     };
     const detected = detectLocale();
