@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: "Heal Yoga | Movement for Every Body",
   description: "Accessible, instructor-led yoga demonstrations and public health conversations from the University of Glasgow Heal Yoga initiative.",
   icons: {
-    icon: `${assetBase}/favicon.svg`,
-    shortcut: `${assetBase}/favicon.svg`,
+    icon: "./favicon.svg",
+    shortcut: "./favicon.svg",
   },
   openGraph: {
     title: "Heal Yoga | Movement for Every Body",

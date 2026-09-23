@@ -1,19 +1,16 @@
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
-const basePath = isGitHubPages ? "/healyoga" : "";
-
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath,
-  assetPrefix: isGitHubPages ? "/healyoga/" : "",
+  // The same export is served from both /healyoga/ on github.io and / on the
+  // custom domain. Relative asset URLs work in both locations; an absolute
+  // basePath only works on one of them.
+  assetPrefix: ".",
   env: {
-    // process.env.GITHUB_ACTIONS is a build-time-only Node variable — it is not
-    // automatically inlined into client ("use client") bundles, so any <img src>
-    // built from it resolves against the wrong origin in the browser. Declaring
-    // it here makes Next.js inline the value into both server and client code.
-    NEXT_PUBLIC_BASE_PATH: basePath,
+    // Client-rendered public images need the same relative prefix as Next.js
+    // assets so they work at both hosting paths.
+    NEXT_PUBLIC_BASE_PATH: ".",
   },
 };
 
