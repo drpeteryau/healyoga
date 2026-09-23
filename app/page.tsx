@@ -1,54 +1,222 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { categoryLabels, localeLabels, localeNames, locales, ui, videoText, type Locale } from "./i18n";
+
+const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 type Video = {
   id: string;
   title: string;
   duration: string;
   category: "Advanced" | "Intermediate" | "Standing" | "Sitting" | "Interview";
+  description?: string;
 };
 
 const videos: Video[] = [
   { id: "egNdbDDS_Ws", title: "Interview 01 — A/Prof CK Seow", duration: "0:39", category: "Interview" },
   { id: "dyYVJnccUx0", title: "Interview 02 — A/Prof CK Seow", duration: "0:38", category: "Interview" },
-  { id: "IsGAZrjEMp4", title: "Interview 03 — Ms LP Lim", duration: "0:48", category: "Interview" },
-  { id: "jV6KZ2no0Pg", title: "Interview 02 — Ms LP Lim", duration: "0:42", category: "Interview" },
   { id: "CiJ0R9ZugeY", title: "Interview 01 — Ms LP Lim", duration: "0:50", category: "Interview" },
-  { id: "mzqsdpvfDto", title: "Sun Salutation Flow", duration: "1:51", category: "Advanced" },
-  { id: "m0b_BebYNBQ", title: "Baby Cobra", duration: "0:55", category: "Intermediate" },
-  { id: "hComtEvbgN4", title: "Eight-Point Pose", duration: "1:21", category: "Intermediate" },
-  { id: "Ma93Zxwp_-o", title: "Plank", duration: "1:08", category: "Intermediate" },
-  { id: "0MUxqZmmmq8", title: "Downward Dog", duration: "1:43", category: "Intermediate" },
-  { id: "ze9cJVnkYOg", title: "Triangle Pose", duration: "1:23", category: "Standing" },
-  { id: "aP40k--wiPo", title: "Side Angle Pose", duration: "1:33", category: "Standing" },
-  { id: "1EmtCVdAKuI", title: "Reverse Warrior 2", duration: "1:21", category: "Standing" },
-  { id: "D8OEOqj6LKo", title: "Warrior 2", duration: "1:15", category: "Standing" },
-  { id: "ETFrnz9CCsw", title: "Warrior 1", duration: "1:34", category: "Standing" },
-  { id: "vpECbuWGnVw", title: "Warrior 3", duration: "1:05", category: "Standing" },
-  { id: "zr-EsTGQE3g", title: "Standing Crunch", duration: "1:09", category: "Standing" },
-  { id: "qJHd5KIO35I", title: "Back and Chest Stretch", duration: "1:05", category: "Standing" },
-  { id: "Z_LIRhABH7c", title: "Goddess Pose (Leg Stretch)", duration: "1:19", category: "Sitting" },
-  { id: "r4ixF0BmzfI", title: "Goddess Pose (Shoulders and Torso Twist)", duration: "1:34", category: "Sitting" },
-  { id: "78t9qqSWf4Q", title: "Leg Raise (Straight)", duration: "1:14", category: "Sitting" },
-  { id: "6tlBgzidSuU", title: "Leg Raise (Bent)", duration: "1:12", category: "Sitting" },
-  { id: "vkb-jrEq4sc", title: "Shoulders and Torso Twist", duration: "1:21", category: "Sitting" },
-  { id: "5jSzGqTOTeY", title: "Shoulders Lateral Stretch", duration: "1:03", category: "Sitting" },
-  { id: "-K7puFfQgIc", title: "Bent Arm Rotation", duration: "1:01", category: "Sitting" },
-  { id: "oCGcR5GgpWI", title: "Straight Arms Rotation", duration: "1:11", category: "Sitting" },
-  { id: "ZhelQy85j3M", title: "Head, Neck and Shoulders Stretch", duration: "1:24", category: "Sitting" },
+  { id: "jV6KZ2no0Pg", title: "Interview 02 — Ms LP Lim", duration: "0:42", category: "Interview" },
+  { id: "IsGAZrjEMp4", title: "Interview 03 — Ms LP Lim", duration: "0:48", category: "Interview" },
+  {
+    id: "mzqsdpvfDto",
+    title: "Sun Salutation Flow",
+    duration: "1:51",
+    category: "Advanced",
+    description:
+      "A dynamic sequence that links breath with movement, warming up the whole body while improving flexibility, mobility, and circulation.",
+  },
+  {
+    id: "m0b_BebYNBQ",
+    title: "Baby Cobra",
+    duration: "0:55",
+    category: "Intermediate",
+    description:
+      "A gentle backbend that opens the chest and strengthens the upper back while encouraging mobility through the spine.",
+  },
+  {
+    id: "hComtEvbgN4",
+    title: "Eight-Point Pose",
+    duration: "1:21",
+    category: "Intermediate",
+    description:
+      "A controlled lowering position where eight points of the body connect with the floor, helping strengthen the arms, shoulders, chest, and core.",
+  },
+  {
+    id: "Ma93Zxwp_-o",
+    title: "Plank",
+    duration: "1:08",
+    category: "Intermediate",
+    description:
+      "A full body strength pose that engages the core, shoulders, arms, and legs while building stability and body control.",
+  },
+  {
+    id: "0MUxqZmmmq8",
+    title: "Downward Dog",
+    duration: "1:43",
+    category: "Intermediate",
+    description:
+      "A full body stretch that lengthens the spine, shoulders, hamstrings, and calves while strengthening the upper body.",
+  },
+  {
+    id: "ze9cJVnkYOg",
+    title: "Triangle Pose",
+    duration: "1:23",
+    category: "Standing",
+    description:
+      "A standing stretch that opens the hips and chest while lengthening the sides of the body and improving balance.",
+  },
+  {
+    id: "aP40k--wiPo",
+    title: "Side Angle Pose",
+    duration: "1:33",
+    category: "Standing",
+    description:
+      "A deep standing stretch that strengthens the legs while opening the hips, chest, shoulders, and side body.",
+  },
+  {
+    id: "1EmtCVdAKuI",
+    title: "Reverse Warrior 2",
+    duration: "1:21",
+    category: "Standing",
+    description:
+      "A flowing side stretch from Warrior 2 that opens the ribs and waist while maintaining strength and stability through the legs.",
+  },
+  {
+    id: "D8OEOqj6LKo",
+    title: "Warrior 2",
+    duration: "1:15",
+    category: "Standing",
+    description:
+      "A strong standing pose that builds leg endurance and hip mobility while opening the chest and improving balance.",
+  },
+  {
+    id: "ETFrnz9CCsw",
+    title: "Warrior 1",
+    duration: "1:34",
+    category: "Standing",
+    description:
+      "A powerful standing pose that strengthens the legs while stretching the hips and opening the chest and shoulders.",
+  },
+  {
+    id: "vpECbuWGnVw",
+    title: "Warrior 3",
+    duration: "1:05",
+    category: "Standing",
+    description:
+      "A single leg balance that challenges stability while strengthening the legs, core, back, and glutes.",
+  },
+  {
+    id: "zr-EsTGQE3g",
+    title: "Standing Crunch",
+    duration: "1:09",
+    category: "Standing",
+    description:
+      "A standing core movement that brings the upper and lower body together, activating the abdominal muscles while improving coordination and balance.",
+  },
+  {
+    id: "qJHd5KIO35I",
+    title: "Back and Chest Stretch",
+    duration: "1:05",
+    category: "Standing",
+    description:
+      "A mobility stretch that opens the chest and shoulders while releasing tension through the upper back.",
+  },
+  {
+    id: "Z_LIRhABH7c",
+    title: "Goddess Pose (Leg Stretch)",
+    duration: "1:19",
+    category: "Sitting",
+    description:
+      "A wide stance squat that opens the hips and inner thighs while strengthening the glutes, thighs, and legs.",
+  },
+  {
+    id: "r4ixF0BmzfI",
+    title: "Goddess Pose (Shoulders and Torso Twist)",
+    duration: "1:34",
+    category: "Sitting",
+    description:
+      "A Goddess stance combined with an upper body rotation to stretch the shoulders and spine while maintaining lower body strength.",
+  },
+  {
+    id: "78t9qqSWf4Q",
+    title: "Leg Raise (Straight)",
+    duration: "1:14",
+    category: "Sitting",
+    description:
+      "A controlled straight leg lift that strengthens the hip flexors and core while helping improve lower body mobility.",
+  },
+  {
+    id: "6tlBgzidSuU",
+    title: "Leg Raise (Bent)",
+    duration: "1:12",
+    category: "Sitting",
+    description:
+      "A bent knee leg lift that activates the core and hip muscles with a more controlled and accessible range of motion.",
+  },
+  {
+    id: "vkb-jrEq4sc",
+    title: "Shoulders and Torso Twist",
+    duration: "1:21",
+    category: "Sitting",
+    description:
+      "A rotational stretch that mobilizes the spine while releasing tension through the shoulders, chest, and upper back.",
+  },
+  {
+    id: "5jSzGqTOTeY",
+    title: "Shoulders Lateral Stretch",
+    duration: "1:03",
+    category: "Sitting",
+    description:
+      "A side bending stretch that lengthens the shoulders, upper back, waist, and sides of the torso.",
+  },
+  {
+    id: "-K7puFfQgIc",
+    title: "Bent Arm Rotation",
+    duration: "1:01",
+    category: "Sitting",
+    description:
+      "A shoulder mobility movement using bent arms to gently rotate the shoulder joints and loosen the upper body.",
+  },
+  {
+    id: "oCGcR5GgpWI",
+    title: "Straight Arms Rotation",
+    duration: "1:11",
+    category: "Sitting",
+    description:
+      "A controlled arm rotation that works through a larger shoulder range of motion to improve mobility and warm up the shoulders.",
+  },
+  {
+    id: "ZhelQy85j3M",
+    title: "Head, Neck and Shoulders Stretch",
+    duration: "1:24",
+    category: "Sitting",
+    description:
+      "A gentle mobility sequence designed to release tension around the neck, shoulders, and upper back while improving comfortable range of motion.",
+  },
 ];
 
 const practiceVideos = videos.filter((video) => video.category !== "Interview");
 const interviewVideos = videos.filter((video) => video.category === "Interview");
 const categories = ["All", "Standing", "Sitting", "Intermediate", "Advanced"] as const;
 
-function VideoPlayer({ video }: { video: Video }) {
+function localizedVideo(video: Video, locale: Locale) {
+  const text = videoText[locale][video.id] ?? videoText.en[video.id];
+  return {
+    title: text?.title ?? video.title,
+    description: text?.description ?? video.description,
+    question: text?.question,
+  };
+}
+
+function VideoPlayer({ video, locale }: { video: Video; locale: Locale }) {
+  const { title } = localizedVideo(video, locale);
   return (
     <div className="player-shell">
       <iframe
         src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
-        title={video.title}
+        title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />
@@ -60,58 +228,177 @@ function VideoCard({
   video,
   selected,
   onSelect,
+  locale,
 }: {
   video: Video;
   selected: boolean;
   onSelect: () => void;
+  locale: Locale;
 }) {
+  const { title, description } = localizedVideo(video, locale);
   return (
     <button
       className={`video-card ${selected ? "selected" : ""}`}
       onClick={onSelect}
-      aria-label={`Play ${video.title}`}
+      aria-label={title}
       aria-pressed={selected}
     >
       <span className="thumb">
         <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" />
         <span className="thumb-shade" />
-        <span className="play-icon" aria-hidden="true">▶</span>
+        <span className="play-icon" aria-hidden="true" />
         <span className="duration">{video.duration}</span>
       </span>
       <span className="card-copy">
-        <span className="category">{video.category}</span>
-        <strong>{video.title}</strong>
-        <span className="watch-label">{selected ? "Now playing" : "Watch demonstration"} <b>→</b></span>
+        <span className="category">{categoryLabels[locale][video.category]}</span>
+        <strong>{title}</strong>
+        {description && <span className="watch-label">{description}</span>}
       </span>
     </button>
   );
 }
 
+function LanguageSwitcher({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
+  return (
+    <div className="lang-switcher" aria-label={ui[locale].languageLabel}>
+      {locales.map((l) => (
+        <button
+          key={l}
+          className={locale === l ? "active" : ""}
+          onClick={() => onChange(l)}
+          aria-pressed={locale === l}
+          title={localeNames[l]}
+        >
+          {localeLabels[l]}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const DISCLAIMER_SESSION_KEY = "healyoga-disclaimer-ack";
+
+function DisclaimerModal({ locale, onAgree }: { locale: Locale; onAgree: () => void }) {
+  const t = ui[locale];
+  const [remember, setRemember] = useState(false);
+
+  function handleAgree() {
+    if (remember) {
+      try {
+        window.sessionStorage.setItem(DISCLAIMER_SESSION_KEY, "1");
+      } catch {
+        // sessionStorage unavailable (e.g. private browsing) — modal will simply reappear next load
+      }
+    }
+    onAgree();
+  }
+
+  function handleDisagree() {
+    window.location.href = "https://www.google.com";
+  }
+
+  return (
+    <div className="disclaimer-overlay" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+      <div className="disclaimer-modal">
+        <h2 id="disclaimer-title">{t.disclaimerTitle}</h2>
+        <ul>
+          <li>{t.disclaimerPoint1}</li>
+          <li>{t.disclaimerPoint2}</li>
+          <li>{t.disclaimerPoint3}</li>
+          <li>{t.disclaimerPoint4}</li>
+        </ul>
+        <label className="disclaimer-remember">
+          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+          {t.disclaimerRemember}
+        </label>
+        <div className="disclaimer-actions">
+          <button className="disclaimer-disagree" onClick={handleDisagree}>{t.disclaimerDisagree}</button>
+          <button className="disclaimer-agree" onClick={handleAgree}>{t.disclaimerAgree}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LanguageSwitcherCompact({ locale, onChange }: { locale: Locale; onChange: (l: Locale) => void }) {
+  return (
+    <select
+      className="lang-switcher-compact"
+      aria-label={ui[locale].languageLabel}
+      value={locale}
+      onChange={(e) => onChange(e.target.value as Locale)}
+    >
+      {locales.map((l) => (
+        <option key={l} value={l}>{localeNames[l]}</option>
+      ))}
+    </select>
+  );
+}
+
 export default function Home() {
-  const [page, setPage] = useState<"practice" | "interviews" | "credits">("practice");
+  const [page, setPage] = useState<"practice" | "interviews" | "credits" | "terms">("practice");
   const [selectedPractice, setSelectedPractice] = useState(practiceVideos[0]);
   const [selectedInterview, setSelectedInterview] = useState(interviewVideos[0]);
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
   const [query, setQuery] = useState("");
+  const [locale, setLocale] = useState<Locale>("en");
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+
+  useEffect(() => {
+    let acknowledged = false;
+    try {
+      acknowledged = window.sessionStorage.getItem(DISCLAIMER_SESSION_KEY) === "1";
+    } catch {
+      // sessionStorage unavailable — fall back to showing the disclaimer
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time disclaimer hydration from sessionStorage, not an external subscription
+    if (!acknowledged) setShowDisclaimer(true);
+  }, []);
 
   useEffect(() => {
     const syncHash = () => {
       const hash = window.location.hash.replace("#/", "");
-      if (hash === "interviews" || hash === "credits" || hash === "practice") setPage(hash);
+      if (hash === "interviews" || hash === "credits" || hash === "practice" || hash === "terms") setPage(hash);
     };
     syncHash();
     window.addEventListener("hashchange", syncHash);
     return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
+  useEffect(() => {
+    const detectLocale = () => {
+      const stored = window.localStorage.getItem("healyoga-locale");
+      if (stored && (locales as string[]).includes(stored)) return stored as Locale;
+      const browser = navigator.language.toLowerCase();
+      if (browser.startsWith("zh")) {
+        return browser.includes("hans") || browser.includes("cn") || browser.includes("sg") ? "zh-Hans" : "zh-Hant";
+      }
+      if (browser.startsWith("ta")) return "ta";
+      if (browser.startsWith("ms")) return "ms";
+      return null;
+    };
+    const detected = detectLocale();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time locale hydration from browser storage/language, not an external subscription
+    if (detected) setLocale(detected);
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("healyoga-locale", locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
+
+  const t = ui[locale];
+  const catLabel = categoryLabels[locale];
+
   const filteredVideos = useMemo(() => {
     return practiceVideos.filter((video) => {
       const inCategory = category === "All" || video.category === category;
-      return inCategory && video.title.toLowerCase().includes(query.toLowerCase());
+      const title = (videoText[locale][video.id] ?? videoText.en[video.id])?.title ?? video.title;
+      return inCategory && title.toLowerCase().includes(query.toLowerCase());
     });
-  }, [category, query]);
+  }, [category, query, locale]);
 
-  function navigate(next: "practice" | "interviews" | "credits") {
+  function navigate(next: "practice" | "interviews" | "credits" | "terms") {
     window.location.hash = `/${next}`;
     setPage(next);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -119,33 +406,36 @@ export default function Home() {
 
   return (
     <main>
+      {showDisclaimer && <DisclaimerModal locale={locale} onAgree={() => setShowDisclaimer(false)} />}
       <header className="site-header">
-        <button className="brand" onClick={() => navigate("practice")} aria-label="Heal Yoga home">
+        <LanguageSwitcherCompact locale={locale} onChange={setLocale} />
+        <button className="brand" onClick={() => navigate("practice")} aria-label={t.brandHome}>
           <span className="brand-mark">H</span>
           <span><b>Heal</b><strong>Yoga</strong></span>
         </button>
         <nav aria-label="Main navigation">
-          <button className={page === "practice" ? "active" : ""} onClick={() => navigate("practice")}>Practice</button>
-          <button className={page === "interviews" ? "active" : ""} onClick={() => navigate("interviews")}>Interviews</button>
-          <button className={page === "credits" ? "active" : ""} onClick={() => navigate("credits")}>Credits</button>
+          <button className={page === "practice" ? "active" : ""} onClick={() => navigate("practice")}>{t.navPractice}</button>
+          <button className={page === "interviews" ? "active" : ""} onClick={() => navigate("interviews")}>{t.navInterviews}</button>
+          <button className={page === "credits" ? "active" : ""} onClick={() => navigate("credits")}>{t.navCredits}</button>
         </nav>
+        <LanguageSwitcher locale={locale} onChange={setLocale} />
       </header>
 
       {page === "practice" && (
         <>
           <section className="hero">
             <div>
-              <span className="eyebrow">Movement for every body</span>
-              <h1>Find your balance,<br /><em>one pose at a time.</em></h1>
-              <p>Accessible, instructor-led yoga demonstrations designed for students, older adults, and everyone beginning their wellness journey.</p>
+              <span className="eyebrow">{t.heroEyebrow}</span>
+              <h1>{t.heroTitleLine1}<br /><em>{t.heroTitleLine2}</em></h1>
+              <p>{t.heroBody}</p>
               <button className="primary" onClick={() => document.getElementById("library")?.scrollIntoView({ behavior: "smooth" })}>
-                Explore 22 practices <span>↓</span>
+                {t.heroCta} <span>↓</span>
               </button>
             </div>
             <div className="featured">
-              <VideoPlayer video={selectedPractice} />
+              <VideoPlayer video={selectedPractice} locale={locale} />
               <div className="featured-meta">
-                <div><span>{selectedPractice.category}</span><h2>{selectedPractice.title}</h2></div>
+                <div><span>{catLabel[selectedPractice.category]}</span><h2>{localizedVideo(selectedPractice, locale).title}</h2></div>
                 <span className="time">{selectedPractice.duration}</span>
               </div>
             </div>
@@ -153,24 +443,24 @@ export default function Home() {
 
           <section className="library" id="library">
             <div className="section-heading">
-              <div><span className="eyebrow">Guided library</span><h2>Choose your practice</h2></div>
+              <div><span className="eyebrow">{t.libraryEyebrow}</span><h2>{t.libraryTitle}</h2></div>
               <label className="search">
                 <span aria-hidden="true">⌕</span>
-                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search poses" aria-label="Search yoga poses" />
+                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} aria-label={t.searchAriaLabel} />
               </label>
             </div>
-            <div className="filters" aria-label="Filter by practice type">
-              {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
+            <div className="filters" aria-label={t.filtersAriaLabel}>
+              {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{catLabel[item]}</button>)}
             </div>
             <div className="video-grid">
               {filteredVideos.map((video) => (
-                <VideoCard key={video.id} video={video} selected={selectedPractice.id === video.id} onSelect={() => {
+                <VideoCard key={video.id} video={video} selected={selectedPractice.id === video.id} locale={locale} onSelect={() => {
                   setSelectedPractice(video);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }} />
               ))}
             </div>
-            {filteredVideos.length === 0 && <p className="empty">No poses match your search. Try a different term.</p>}
+            {filteredVideos.length === 0 && <p className="empty">{t.emptyResults}</p>}
           </section>
         </>
       )}
@@ -178,23 +468,61 @@ export default function Home() {
       {page === "interviews" && (
         <section className="interview-page">
           <div className="page-intro">
-            <span className="eyebrow">Conversations on wellbeing</span>
-            <h1>Hear from the people<br /><em>behind the practice.</em></h1>
-            <p>Short perspectives from clinical and yoga professionals on accessible movement, healthy ageing, and the thinking behind Heal Yoga.</p>
+            <span className="eyebrow">{t.interviewsEyebrow}</span>
+            <h1>{t.interviewsTitleLine1}<br /><em>{t.interviewsTitleLine2}</em></h1>
+            <p>{t.interviewsBody}</p>
           </div>
           <div className="interview-layout">
             <div>
-              <VideoPlayer video={selectedInterview} />
-              <div className="interview-now"><span>Now playing</span><h2>{selectedInterview.title}</h2></div>
+              <VideoPlayer video={selectedInterview} locale={locale} />
+              <div className="interview-now">
+                <span>{t.nowPlaying}</span>
+                <h2>{localizedVideo(selectedInterview, locale).title}</h2>
+                {localizedVideo(selectedInterview, locale).question && (
+                  <p className="interview-question">{localizedVideo(selectedInterview, locale).question}</p>
+                )}
+              </div>
             </div>
             <div className="interview-list">
               {interviewVideos.map((video, index) => (
                 <button key={video.id} className={selectedInterview.id === video.id ? "active" : ""} onClick={() => setSelectedInterview(video)}>
                   <span className="interview-number">0{index + 1}</span>
-                  <span><b>{video.title}</b><small>{video.duration} · Play interview</small></span>
-                  <span className="round-play">▶</span>
+                  <span>
+                    <b>{localizedVideo(video, locale).title}</b>
+                    {localizedVideo(video, locale).question && (
+                      <em className="interview-question-list">{localizedVideo(video, locale).question}</em>
+                    )}
+                    <small>{video.duration} · {t.playInterview}</small>
+                  </span>
+                  <span className="round-play" aria-hidden="true" />
                 </button>
               ))}
+            </div>
+          </div>
+
+          <div className="written-interview">
+            <figure className="written-photo">
+              <img src={`${assetBase}/kamala.jpg`} alt={t.writtenPhotoName} loading="lazy" />
+              <figcaption>
+                <b>{t.writtenPhotoName}</b>
+                <small>{t.writtenPhotoAffiliation1}<br />{t.writtenPhotoAffiliation2}</small>
+              </figcaption>
+            </figure>
+            <div className="written-copy">
+              <span className="eyebrow">{t.writtenEyebrow}</span>
+              <h2>{t.writtenTitle}</h2>
+              <p>{t.writtenP1}</p>
+              <p>{t.writtenP2}</p>
+              <p>{t.writtenP3}</p>
+              <p>{t.writtenP4}</p>
+              <p>{t.writtenP5}</p>
+              <h3>{t.writtenContentHeading}</h3>
+              <p><b>{t.writtenContentChairLabel}</b>{t.writtenContentChairBody}</p>
+              <p><b>{t.writtenContentSunLabel}</b>{t.writtenContentSunBody}</p>
+              <h3>{t.writtenFeaturesHeading}</h3>
+              <p>{t.writtenFeaturesBody}</p>
+              <h3>{t.writtenNursingHeading}</h3>
+              <p>{t.writtenNursingBody}</p>
             </div>
           </div>
         </section>
@@ -203,41 +531,103 @@ export default function Home() {
       {page === "credits" && (
         <section className="credits-page">
           <div className="credits-hero">
-            <span className="eyebrow">A university collaboration</span>
-            <h1>Built with care.<br /><em>Shared with purpose.</em></h1>
-            <p>Heal Yoga is a higher education initiative using open-source mobile technology to make yoga practice and public health awareness more accessible to youth and older adults.</p>
+            <span className="eyebrow">{t.creditsEyebrow}</span>
+            <h1>{t.creditsTitleLine1}<br /><em>{t.creditsTitleLine2}</em></h1>
+            <p>{t.creditsBody}</p>
           </div>
           <div className="credits-grid">
             <article className="team-card">
-              <span className="card-kicker">Development team</span>
+              <span className="card-kicker">{t.devTeamKicker}</span>
               <h2>CSC2101 & CSC2102</h2>
-              <p className="course">Professional Software Development & Team Project</p>
+              <p className="course">{t.devTeamCourse}</p>
               <div className="member-grid">
-                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name, i) => (
-                  <div key={name}><span>{String(i + 1).padStart(2, "0")}</span><b>{name}</b></div>
+                {["Jocasta Tan", "Daniel Soong", "Kaam Yan Hye", "Natalie Narayanan"].map((name) => (
+                  <div key={name}><b>{name}</b></div>
                 ))}
               </div>
             </article>
             <div className="credit-stack">
-              <article><span>Faculty advisor</span><h3>Dr Peter CY Yau</h3></article>
-              <article><span>Supported by</span><h3>School of Computing Science</h3><p>& School of Medicine, Dentistry & Nursing<br />University of Glasgow</p></article>
+              <article>
+                <span>{t.facultyAdvisorLabel}</span>
+                <h3>{t.facultyAdvisorName}</h3>
+                <a href="https://github.com/drpeteryau/" target="_blank" rel="noreferrer">{t.facultyAdvisorGithub}</a>
+              </article>
+              <article>
+                <span>{t.supportedByLabel}</span>
+                <h3>{t.supportedByUniversity}</h3>
+                <p className="schools">{t.supportedBySchool1}<br />{t.supportedBySchool2}</p>
+                <h3>{t.supportedByInstitute}</h3>
+              </article>
             </div>
           </div>
           <aside className="thanks">
-            <span className="quote-mark">“</span>
-            <div><span className="eyebrow">Special thanks</span><h2>Ms Lim Li Peng</h2><p>Professional yoga instructor leading the demonstrations featured throughout Heal Yoga.</p></div>
+            <img className="thanks-photo" src={`${assetBase}/lim-li-peng.jpg`} alt={t.specialThanksName} loading="lazy" />
+            <div>
+              <span className="eyebrow">{t.specialThanksLabel}</span>
+              <h2>{t.specialThanksName}</h2>
+              <p>{t.specialThanksBody}</p>
+              <a href="https://yoga8288.com/" target="_blank" rel="noreferrer">{t.specialThanksLink}</a>
+            </div>
           </aside>
           <div className="open-source">
-            <div><span className="brand-mark">H</span><p><b>Open by design.</b><br />Created for learning, wellbeing, and public benefit.</p></div>
-            <a href="https://github.com/drpeteryau/lts-proj-yoga" target="_blank" rel="noreferrer">View the project on GitHub ↗</a>
+            <div className="open-source-intro"><span className="brand-mark">H</span><p><b>{t.openByDesign}</b><br />{t.openByDesignBody}</p></div>
+            <ul className="repo-list">
+              <li>
+                <div><h3>{t.repo1Name}</h3><p>{t.repo1Desc}</p></div>
+                <a href="https://github.com/drpeteryau/healyoga" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
+              </li>
+              <li>
+                <div><h3>{t.repo2Name}</h3><p>{t.repo2Desc}</p></div>
+                <a href="https://github.com/drpeteryau/healyoga-poc" target="_blank" rel="noreferrer">{t.viewOnGithub}</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {page === "terms" && (
+        <section className="terms-page">
+          <div className="page-intro">
+            <span className="eyebrow">{t.termsEyebrow}</span>
+            <h1>{t.termsTitleLine1}<br /><em>{t.termsTitleLine2}</em></h1>
+            <p>{t.termsLastUpdated}</p>
+          </div>
+          {t.termsOnlyNotice && <p className="terms-notice">{t.termsOnlyNotice}</p>}
+          <div className="terms-body">
+            <h2>{t.termsSection1Title}</h2>
+            <p>{t.termsSection1Body}</p>
+
+            <h2>{t.termsSection2Title}</h2>
+            <p>{t.termsSection2Body}</p>
+
+            <h2>{t.termsSection3Title}</h2>
+            <p>{t.termsSection3Body}</p>
+
+            <h2>{t.termsSection4Title}</h2>
+            <p>{t.termsSection4Body}</p>
+
+            <h2>{t.termsSection5Title}</h2>
+            <p>{t.termsSection5Body}</p>
+
+            <h2>{t.termsSection6Title}</h2>
+            <p>{t.termsSection6Body}</p>
+
+            <h2>{t.termsSection7Title}</h2>
+            <p>{t.termsSection7Body}</p>
+
+            <h2>{t.termsSection8Title}</h2>
+            <p>{t.termsSection8Body}</p>
           </div>
         </section>
       )}
 
       <footer>
         <button className="brand" onClick={() => navigate("practice")}><span className="brand-mark">H</span><span><b>Heal</b><strong>Yoga</strong></span></button>
-        <p>Move gently. Breathe freely. Practice safely.</p>
-        <span>University of Glasgow · Academic project</span>
+        <p>{t.footerTagline}</p>
+        <div className="footer-links">
+          <span>{t.footerAttribution}</span>
+          <button className="footer-link" onClick={() => navigate("terms")}>{t.footerTerms}</button>
+        </div>
       </footer>
     </main>
   );
