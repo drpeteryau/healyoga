@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
-
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath: isGitHubPages ? "/healyoga" : "",
-  assetPrefix: isGitHubPages ? "/healyoga/" : "",
+  // The same export is served from both /healyoga/ on github.io and / on the
+  // custom domain. Relative asset URLs work in both locations; an absolute
+  // basePath only works on one of them.
+  assetPrefix: ".",
 };
 
 export default nextConfig;
